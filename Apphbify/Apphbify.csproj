@@ -79,7 +79,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <None Include="Views\Sites.sshtml" />
+    <Content Include="Views\Sites.sshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
