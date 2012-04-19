@@ -16,13 +16,32 @@
                         <li><a href="/Sites">Sites</a></li>
                     </ul>
                     <ul class="nav pull-right">
-                        <li><a href="/SignIn">Sign In</a></li>
+                        @If.IsLoggedOn
+                            <li><a href="/SignOut">Sign Out</a></li>
+                        @EndIf
+                        @IfNot.IsLoggedOn
+                            <li><a href="/SignIn">Sign In</a></li>
+                        @EndIf
                     </ul>
                 </div>
             </div>
         </div>
     </header>
-    <div class="container">@Section['Content'];</div>
+    <div class="container">
+        @If.HasErrorFlash
+            <div class="alert alert-error">
+                <a class="close" data-dismiss="alert">x</a>
+                <p>@Model.ErrorFlash</p>
+            </div>
+        @EndIf
+        @If.HasSuccessFlash
+            <div class="alert alert-success">
+                <a class="close" data-dismiss="alert">x</a>
+                <p>@Model.SuccessFlash</p>
+            </div>
+        @EndIf
+        @Section['Content'];
+    </div>
     <footer>
         <div class="container">
             <div class="row">
