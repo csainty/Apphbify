@@ -1,9 +1,11 @@
-﻿@Master['Master']
+﻿@Master['Master'] 
 
 @Section['Content']
     <div class="hero-unit">
         <h1>Apphbify all the things!</h1>
-        <p>Instantly deploy open source software to the cloud.</p>
-        <p><a href="/Sites" class="btn btn-primary btn-large">See more</a></p>
+        <p>
+            Instantly deploy open source software to the cloud.</p>
+        <p>
+            <a href="/Sites" class="btn btn-primary btn-large">See more</a></p>
     </div>
-@EndSection
+@EndSection 

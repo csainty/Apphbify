@@ -81,6 +81,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OAuthModule.cs" />
     <Compile Include="PagesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
