@@ -1,0 +1,5 @@
+*.suo
+*.user
+[bB]in/
+[Oo]bj/
+[pP]ackages/
