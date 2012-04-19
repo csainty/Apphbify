@@ -59,6 +59,19 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\apphbify.min.css">
+      <DependentUpon>apphbify.chirp.config</DependentUpon>
+    </Content>
+    <None Include="Content\css\bootstrap-responsive.css" />
+    <None Include="Content\css\bootstrap.css" />
+    <None Include="Content\css\master.css" />
+    <Content Include="Content\img\glyphicons-halflings-white.png" />
+    <Content Include="Content\img\glyphicons-halflings.png" />
+    <Content Include="Content\js\apphbify.min.js">
+      <DependentUpon>apphbify.chirp.config</DependentUpon>
+    </Content>
+    <None Include="Content\js\bootstrap.js" />
+    <None Include="Content\js\jquery-1.7.2.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -75,8 +88,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\Home.sshtml" />
+    <None Include="Content\js\apphbify.chirp.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Content\css\apphbify.chirp.config" />
+    <Content Include="Views\Home.sshtml" />
+    <Content Include="Views\Master.sshtml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
