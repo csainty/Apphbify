@@ -1,0 +1,12 @@
+﻿[
+  {
+    name: 'SayWat',
+    project_url: 'https://github.com/Code52/saywat',
+    download_url: 'https://github.com/Code52/saywat/tarball/master'
+  },
+  {
+    name: 'IdeaStrike',
+    project_url: 'https://github.com/Code52/Ideastrike',
+    download_url: 'https://github.com/Code52/Ideastrike/tarball/master'
+  }
+]
