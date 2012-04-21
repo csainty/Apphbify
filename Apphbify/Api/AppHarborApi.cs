@@ -1,25 +1,30 @@
 ﻿using System;
-using System.Configuration;
 using System.IO;
 using System.Net;
 using System.Web;
 
-namespace Apphbify.Services
+namespace Apphbify.Api
 {
-    public static class OAuth
+    public class AppHarborApi
     {
-        public static string GetAuthUrl()
+        private string _OAuthId = "";
+        private string _OAuthRedirect = "";
+        private string _OAuthSecret = "";
+
+        public AppHarborApi(string oAuthId, string oAuthRedirect, string oAuthSecret)
         {
-            string id = ConfigurationManager.AppSettings["OAUTH_ID"];
-            string url = ConfigurationManager.AppSettings["OAUTH_REDIRECT"];
-            return String.Format("https://appharbor.com/user/authorizations/new?client_id={0}&redirect_uri={1}", Uri.EscapeDataString(id), Uri.EscapeDataString(url));
+            _OAuthId = oAuthId;
+            _OAuthRedirect = oAuthRedirect;
+            _OAuthSecret = oAuthSecret;
         }
 
-        internal static string GetAccessToken(string code)
+        public string GetAuthUrl()
         {
-            string id = ConfigurationManager.AppSettings["OAUTH_ID"];
-            string secret = ConfigurationManager.AppSettings["OAUTH_KEY"];
+            return String.Format("https://appharbor.com/user/authorizations/new?client_id={0}&redirect_uri={1}", Uri.EscapeDataString(_OAuthId), Uri.EscapeDataString(_OAuthRedirect));
+        }
 
+        public string GetAccessToken(string code)
+        {
             try
             {
                 var request = (HttpWebRequest)HttpWebRequest.Create("https://appharbor.com/tokens");
@@ -28,7 +33,7 @@ namespace Apphbify.Services
                 using (var stream = request.GetRequestStream())
                 using (var writer = new StreamWriter(stream))
                 {
-                    writer.Write(String.Format("client_id={0}&client_secret={1}&code={2}", Uri.EscapeDataString(id), Uri.EscapeDataString(secret), Uri.EscapeDataString(code)));
+                    writer.Write(String.Format("client_id={0}&client_secret={1}&code={2}", Uri.EscapeDataString(_OAuthId), Uri.EscapeDataString(_OAuthSecret), Uri.EscapeDataString(code)));
                     writer.Flush();
                     writer.Close();
                 }

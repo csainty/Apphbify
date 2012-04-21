@@ -93,11 +93,11 @@
     <EmbeddedResource Include="Sites.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AppHarborApi.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="OAuthModule.cs" />
     <Compile Include="PagesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\OAuth.cs" />
     <Compile Include="SessionKeys.cs" />
     <Compile Include="Data\SitesData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

@@ -5,7 +5,7 @@ namespace Apphbify
 {
     public class PagesModule : NancyModule
     {
-        private DataStore _Store;
+        private readonly DataStore _Store;
 
         public PagesModule(DataStore store)
         {
