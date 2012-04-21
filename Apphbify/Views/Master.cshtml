@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Apphbify.ViewModels.BaseViewModel>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +13,15 @@
             <div class="navbar-inner">
                 <div class="container"><a class="brand" href="/">Apphbify</a>
                     <ul class="nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/Sites">Sites</a></li>
+                        <li class="@(Model.CurrentPage == "Home" ? "active" : "")"><a href="/">Home</a></li>
+                        <li class="@(Model.CurrentPage == "Sites" ? "active" : "")"><a href="/Sites">Sites</a></li>
                     </ul>
                     <ul class="nav pull-right">
                         @if (Model.IsLoggedOn)
                         {
                             <li><a href="/SignOut">Sign Out</a></li>
                         }
-                        @if (Model.IsLoggedOn)
+                        else
                         {
                             <li><a href="/SignIn">Sign In</a></li>
                         }

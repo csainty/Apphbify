@@ -1,6 +1,6 @@
-﻿@{
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Apphbify.ViewModels.SitesViewModel>
+@{
     Layout = "Master.cshtml";
-    var model = Model as SitesViewModel;
 }
 
 @foreach (var site in Model.Sites)
