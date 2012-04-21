@@ -18,7 +18,7 @@ namespace Apphbify
 
         private Response SignIn(dynamic parameters)
         {
-            return Response.AsRedirect(_Api.GetAuthUrl());
+            return Response.AsRedirect(_Api.OAuth.GetAuthUrl());
         }
 
         private Response SignOut(dynamic parameters)
@@ -33,7 +33,7 @@ namespace Apphbify
             string access_token = "";
 
             if (Request.Query.code.HasValue)
-                access_token= _Api.GetAccessToken(Request.Query.code);
+                access_token= _Api.OAuth.GetAccessToken(Request.Query.code);
 
             if (String.IsNullOrEmpty(access_token))
             {

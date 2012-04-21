@@ -72,6 +72,7 @@
     <Content Include="Content\css\apphbify.min.css">
       <DependentUpon>apphbify.chirp.config</DependentUpon>
     </Content>
+    <Compile Include="Api\AppHarborApi.OAuth.cs" />
     <None Include="Content\css\bootstrap-responsive.css" />
     <None Include="Content\css\bootstrap.css" />
     <None Include="Content\css\master.css" />
@@ -93,6 +94,7 @@
     <EmbeddedResource Include="Sites.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\AppHarborApi.Applications.cs" />
     <Compile Include="Api\AppHarborApi.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="OAuthModule.cs" />
