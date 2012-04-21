@@ -1,7 +1,0 @@
-﻿@Master['Master']
-
-@Section['Content']
-<p>
-    Choose a site.
-</p>
-@EndSection 

@@ -1,11 +1,13 @@
 ﻿[
   {
     name: 'SayWat',
+    description: 'Find the meaning of regional words and sayings.',
     project_url: 'https://github.com/Code52/saywat',
     download_url: 'https://github.com/Code52/saywat/tarball/master'
   },
   {
     name: 'IdeaStrike',
+    description: 'Gather user feedback and ideas for your product.',
     project_url: 'https://github.com/Code52/Ideastrike',
     download_url: 'https://github.com/Code52/Ideastrike/tarball/master'
   }

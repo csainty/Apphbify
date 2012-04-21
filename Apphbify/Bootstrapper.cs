@@ -11,5 +11,10 @@ namespace Apphbify
         {
             CookieBasedSessions.Enable(pipelines);
         }
+
+        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+        {
+            container.Register<DataStore>(new DataStore()); // Singleton over the application lifetime
+        }
     }
 }

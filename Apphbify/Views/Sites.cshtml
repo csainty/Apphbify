@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "Master.cshtml";
+    var model = Model as SitesViewModel;
+}
+
+@foreach (var site in Model.Sites)
+{
+    <div class="site">
+        <h2>@site.Name</h2>
+        <p>@site.Description</p>
+        <p><a href="@site.ProjectUrl">Visit Site</a></p>
+    </div>
+}

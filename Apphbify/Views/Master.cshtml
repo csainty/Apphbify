@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apphbify</title>
     <link href="/Content/css/apphbify.min.css" rel="stylesheet" type="text/css" />
-    @Section['Head'];
+    @RenderSection("Head", false)
 </head>
 <body>
     <header>
@@ -16,31 +16,33 @@
                         <li><a href="/Sites">Sites</a></li>
                     </ul>
                     <ul class="nav pull-right">
-                        @If.IsLoggedOn
+                        @if (Model.IsLoggedOn)
+                        {
                             <li><a href="/SignOut">Sign Out</a></li>
-                        @EndIf
-                        @IfNot.IsLoggedOn
+                        }
+                        @if (Model.IsLoggedOn)
+                        {
                             <li><a href="/SignIn">Sign In</a></li>
-                        @EndIf
+                        }
                     </ul>
                 </div>
             </div>
         </div>
     </header>
     <div class="container">
-        @If.HasErrorFlash
-            <div class="alert alert-error">
-                <a class="close" data-dismiss="alert">x</a>
+        @if (Model.HasErrorFlash)
+        {
+            <div class="alert alert-error"><a class="close" data-dismiss="alert">x</a>
                 <p>@Model.ErrorFlash</p>
             </div>
-        @EndIf
-        @If.HasSuccessFlash
-            <div class="alert alert-success">
-                <a class="close" data-dismiss="alert">x</a>
+        }
+        @if (Model.HasSuccessFlash)
+        {
+            <div class="alert alert-success"><a class="close" data-dismiss="alert">x</a>
                 <p>@Model.SuccessFlash</p>
             </div>
-        @EndIf
-        @Section['Content'];
+        }
+        @RenderBody()
     </div>
     <footer>
         <div class="container">
@@ -50,6 +52,6 @@
         </div>
     </footer>
     <script src="/Content/js/apphbify.min.js"></script>
-    @Section['Scripts'];
+    @RenderSection("Scripts", false)
 </body>
 </html>
