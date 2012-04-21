@@ -1,7 +1,6 @@
 ﻿using System;
-using System.IO;
-using System.Net;
 using System.Web;
+using RestSharp;
 
 namespace Apphbify.Api
 {
@@ -27,29 +26,13 @@ namespace Apphbify.Api
         {
             try
             {
-                var request = (HttpWebRequest)HttpWebRequest.Create("https://appharbor.com/tokens");
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.Method = "POST";
-                using (var stream = request.GetRequestStream())
-                using (var writer = new StreamWriter(stream))
-                {
-                    writer.Write(String.Format("client_id={0}&client_secret={1}&code={2}", Uri.EscapeDataString(_OAuthId), Uri.EscapeDataString(_OAuthSecret), Uri.EscapeDataString(code)));
-                    writer.Flush();
-                    writer.Close();
-                }
-
-                var response = (HttpWebResponse)request.GetResponse();
-                var body = "";
-
-                using (var stream = response.GetResponseStream())
-                using (var reader = new StreamReader(stream))
-                {
-                    body = reader.ReadToEnd();
-                    reader.Close();
-                }
-                response.Close();
-
-                var parts = HttpUtility.ParseQueryString(body);
+                var client = new RestClient("https://appharbor.com");
+                var request = new RestRequest("tokens", Method.POST)
+                    .AddParameter("client_id", _OAuthId)
+                    .AddParameter("client_secret", _OAuthSecret)
+                    .AddParameter("code", code);
+                var response = client.Execute(request);
+                var parts = HttpUtility.ParseQueryString(response.Content);
                 return parts["access_token"];
             }
             catch (Exception e)
