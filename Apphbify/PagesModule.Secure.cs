@@ -47,23 +47,28 @@ namespace Apphbify
             if (result.Status != CreateStatus.Created) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem creating the application at AppHarbor.");
 
             string access_token = (string)Session[SessionKeys.ACCESS_TOKEN];
+
+            // Attempt to disable precompilation. Not fatal if it fails.
+            BuildService.DisablePreCompilation(access_token, result.ID);
+
+            // Deploy the first code bundle
             if (!BuildService.DeployBuild(access_token, result.ID, app.DownloadUrl)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem deploying the application.");
 
             // Try to install all addons, even if one fails, and report on failure at the end.
-            bool ok = true;
+            bool addonsOk = true;
             foreach (var addon in app.Addons)
             {
                 if (Addons.Supported.ContainsKey(addon))
                 {
                     if (!BuildService.EnableAddon(access_token, result.ID, addon, Addons.Supported[addon]))
-                        ok = false;
+                        addonsOk = false;
                 }
                 else
                 {
-                    ok = false;
+                    addonsOk = false;
                 }
             }
-            if (!ok) return Response.AsRedirect("/Sites").WithErrorFlash(Session, "Your site has been deployed but there were problems installing all required addons. The site may not operate as expected.");
+            if (!addonsOk) return Response.AsRedirect("/Sites").WithErrorFlash(Session, "Your site has been deployed but there were problems installing all required addons. The site may not operate as expected.");
 
             return Response.AsRedirect("/Sites").WithSuccessFlash(Session, String.Format("{0} deployed into site {1} ({2})", app.Name, appName, result.ID));
         }

@@ -28,6 +28,16 @@ namespace Apphbify.Services
             return response.StatusCode == HttpStatusCode.Created;
         }
 
+        public static bool DisablePreCompilation(string access_token, string application_slug)
+        {
+            var client = new RestClient("https://appharbor.com/");
+            var request = new RestRequest("applications/{slug}/precompilation", Method.DELETE)
+                .AddUrlSegment("slug", application_slug)
+                .AddHeader("Authorization", "BEARER " + access_token);
+            var response = client.Execute(request);
+            return response.StatusCode == HttpStatusCode.NotFound;
+        }
+
         public static bool EnableAddon(string access_token, string application_slug, string addon_id, string plan_id)
         {
             var client = new RestClient("https://appharbor.com/");
