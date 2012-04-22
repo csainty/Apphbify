@@ -13,7 +13,7 @@
     name: 'IdeaStrike',
     description: 'Gather user feedback and ideas for your product.',
     project_url: 'https://github.com/Code52/Ideastrike',
-    download_url: 'https://github.com/Code52/Ideastrike/tarball/master',
+    download_url: 'https://github.com/csainty/Ideastrike/tarball/apphbify',
     addons: ['sqlserver'],
     enableFileSystem: false
   }
