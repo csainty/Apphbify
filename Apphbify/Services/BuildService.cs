@@ -19,7 +19,7 @@ namespace Apphbify.Services
                         @default = new
                         {
                             commit_id = Guid.NewGuid().ToString().Split('-')[0],
-                            commit_message = "Deployed from Apphbify",
+                            commit_message = "Deployed from Appharbify",
                             download_url = download_url
                         }
                     }
