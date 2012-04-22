@@ -15,6 +15,7 @@
                     <ul class="nav">
                         <li class="@(Model.CurrentPage == "Home" ? "active" : "")"><a href="/">Home</a></li>
                         <li class="@(Model.CurrentPage == "Apps" ? "active" : "")"><a href="/Apps">Apps</a></li>
+                        <li class="@(Model.CurrentPage == "Sites" ? "active" : "")"><a href="/Sites">Deployed Sites</a></li>
                     </ul>
                     <ul class="nav pull-right">
                         @if (Model.IsLoggedOn)
