@@ -99,6 +99,7 @@
     </Content>
     <Content Include="Views\Apps.cshtml" />
     <EmbeddedResource Include="Apps.json" />
+    <Content Include="Views\SignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="SessionKeys.cs" />
     <Compile Include="Data\SitesData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\AppsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

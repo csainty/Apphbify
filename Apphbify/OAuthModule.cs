@@ -1,5 +1,6 @@
 ﻿using System;
 using Apphbify.Services;
+using Apphbify.ViewModels;
 using Nancy;
 
 namespace Apphbify
@@ -18,7 +19,7 @@ namespace Apphbify
 
         private Response SignIn(dynamic parameters)
         {
-            return Response.AsRedirect(_OAuth.GetAuthUrl());
+            return View["SignIn", new SignInViewModel(_OAuth, Request.Session)];
         }
 
         private Response SignOut(dynamic parameters)
