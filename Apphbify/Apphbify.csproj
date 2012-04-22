@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AppHarbor.NET">
+      <HintPath>..\packages\AppHarbor.NET.1.1.0\lib\net35\AppHarbor.NET.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.10.0\lib\net40\Nancy.dll</HintPath>
@@ -75,7 +78,6 @@
     <Content Include="Content\css\apphbify.min.css">
       <DependentUpon>apphbify.chirp.config</DependentUpon>
     </Content>
-    <Compile Include="Api\AppHarborApi.OAuth.cs" />
     <None Include="Content\css\bootstrap-responsive.css" />
     <None Include="Content\css\bootstrap.css" />
     <None Include="Content\css\master.css" />
@@ -99,12 +101,11 @@
     <EmbeddedResource Include="Sites.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\AppHarborApi.Applications.cs" />
-    <Compile Include="Api\AppHarborApi.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="OAuthModule.cs" />
     <Compile Include="PagesModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\OAuth.cs" />
     <Compile Include="SessionKeys.cs" />
     <Compile Include="Data\SitesData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

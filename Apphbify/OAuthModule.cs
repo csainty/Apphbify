@@ -1,16 +1,16 @@
 ﻿using System;
-using Apphbify.Api;
+using Apphbify.Services;
 using Nancy;
 
 namespace Apphbify
 {
     public class OAuthModule : NancyModule
     {
-        private readonly AppHarborApi _Api;
+        private readonly OAuth _OAuth;
 
-        public OAuthModule(AppHarborApi api)
+        public OAuthModule(OAuth api)
         {
-            _Api = api;
+            _OAuth = api;
             Get["/SignIn"] = SignIn;
             Get["/SignOut"] = SignOut;
             Get["/callback"] = Callback;
@@ -18,7 +18,7 @@ namespace Apphbify
 
         private Response SignIn(dynamic parameters)
         {
-            return Response.AsRedirect(_Api.OAuth.GetAuthUrl());
+            return Response.AsRedirect(_OAuth.GetAuthUrl());
         }
 
         private Response SignOut(dynamic parameters)
@@ -33,7 +33,7 @@ namespace Apphbify
             string access_token = "";
 
             if (Request.Query.code.HasValue)
-                access_token= _Api.OAuth.GetAccessToken(Request.Query.code);
+                access_token = _OAuth.GetAccessToken(Request.Query.code);
 
             if (String.IsNullOrEmpty(access_token))
             {

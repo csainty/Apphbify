@@ -2,15 +2,15 @@
 using System.Web;
 using RestSharp;
 
-namespace Apphbify.Api
+namespace Apphbify.Services
 {
-    public class AppHarborApiOAuth
+    public class OAuth
     {
         private string _OAuthId = "";
         private string _OAuthRedirect = "";
         private string _OAuthSecret = "";
 
-        public AppHarborApiOAuth(string oAuthId, string oAuthRedirect, string oAuthSecret)
+        public OAuth(string oAuthId, string oAuthRedirect, string oAuthSecret)
         {
             _OAuthId = oAuthId;
             _OAuthRedirect = oAuthRedirect;

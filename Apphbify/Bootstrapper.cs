@@ -1,5 +1,5 @@
 ﻿using System.Configuration;
-using Apphbify.Api;
+using Apphbify.Services;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Session;
@@ -22,9 +22,9 @@ namespace Apphbify
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
         {
             // Singleton over the request, but only created when needed
-            container.Register<AppHarborApi>((_, __) =>
+            container.Register<OAuth>((_, __) =>
             {
-                return new AppHarborApi(ConfigurationManager.AppSettings["OAUTH_ID"], ConfigurationManager.AppSettings["OAUTH_REDIRECT"], ConfigurationManager.AppSettings["OAUTH_KEY"]);
+                return new OAuth(ConfigurationManager.AppSettings["OAUTH_ID"], ConfigurationManager.AppSettings["OAUTH_REDIRECT"], ConfigurationManager.AppSettings["OAUTH_KEY"]);
             });
         }
     }
