@@ -5,7 +5,8 @@
     description: 'Find the meaning of regional words and sayings.',
     project_url: 'https://github.com/Code52/saywat',
     download_url: 'https://github.com/Code52/saywat/tarball/master',
-    addons: ['mongolab']
+    addons: ['mongolab'],
+    enableFileSystem: true
   },
   {
     key: 'ideastrike',
@@ -13,6 +14,7 @@
     description: 'Gather user feedback and ideas for your product.',
     project_url: 'https://github.com/Code52/Ideastrike',
     download_url: 'https://github.com/Code52/Ideastrike/tarball/master',
-    addons: ['sqlserver']
+    addons: ['sqlserver'],
+    enableFileSystem: false
   }
 ]

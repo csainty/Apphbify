@@ -51,6 +51,10 @@ namespace Apphbify
             // Attempt to disable precompilation. Not fatal if it fails.
             BuildService.DisablePreCompilation(access_token, result.ID);
 
+            // Configure file system access
+            if (app.EnableFileSystem)
+                BuildService.EnableFileSystem(access_token, result.ID);
+
             // Deploy the first code bundle
             if (!BuildService.DeployBuild(access_token, result.ID, app.DownloadUrl)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem deploying the application.");
 

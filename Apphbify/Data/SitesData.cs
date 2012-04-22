@@ -51,5 +51,8 @@ namespace Apphbify
 
         [JsonProperty("addons")]
         public string[] Addons { get; set; }
+
+        [JsonProperty("enableFileSystem")]
+        public bool EnableFileSystem { get; set; }
     }
 }

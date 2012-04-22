@@ -38,6 +38,17 @@ namespace Apphbify.Services
             return response.StatusCode == HttpStatusCode.NotFound;
         }
 
+        public static bool EnableFileSystem(string access_token, string application_slug)
+        {
+            var client = new RestClient("https://appharbor.com/");
+            var request = new RestRequest("applications/{slug}", Method.PUT)
+                .AddUrlSegment("slug", application_slug)
+                .AddHeader("Authorization", "BEARER " + access_token)
+                .AddParameter("Application.IsFileSystemWritable", "true");
+            var response = client.Execute(request);
+            return response.StatusCode == HttpStatusCode.OK;
+        }
+
         public static bool EnableAddon(string access_token, string application_slug, string addon_id, string plan_id)
         {
             var client = new RestClient("https://appharbor.com/");
