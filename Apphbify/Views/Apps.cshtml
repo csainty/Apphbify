@@ -2,11 +2,19 @@
 @{
     Layout = "Master.cshtml";
 }
+<div class="page-header">
+    <h1>Apps</h1>
+    <p>Browse through the apps and see what you can deploy</p>
+</div>
 @foreach (var app in Model.Apps)
 {
     <div class="app">
         <h2>@app.Name</h2>
         <p>@app.Description</p>
-        <a href="@app.ProjectUrl" class="btn btn-success btn">Visit Site</a>
+        @if (Model.IsLoggedOn)
+        {
+            <a href="/Deploy/@app.Key" class="btn btn-info">Deploy</a>
+        }
+        <a href="@app.ProjectUrl" class="btn btn-success">Visit Project Site</a>
     </div>
 }

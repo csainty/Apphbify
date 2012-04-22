@@ -6,12 +6,11 @@
     <h1>Deployed Sites</h1>
     <p>A list of the sites you curently have running on AppHarbor.</p>
 </div>
-
 @foreach (var site in Model.Sites)
 {
     <div class="site">
         <h4>@site.Name (@site.Slug)</h4>
         <a href="@site.Url" class="btn btn-small btn-success" target="_blank">Configuration</a>
-        <a href="http://@(site.Slug).apphb.com/" class="btn btn-small btn-info" target="_blank">View Site</a>
+        <a href="http://@(site.Slug).apphb.com/" class="btn btn-small btn-success" target="_blank">View Site</a>
     </div>
 }

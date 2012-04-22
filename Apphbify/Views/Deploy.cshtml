@@ -1,0 +1,17 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Apphbify.ViewModels.DeployViewModel>
+@{
+    Layout = "Master.cshtml";
+}
+<div class="page-header">
+    <h1>Deploy @Model.App.Name</h1>
+    <p>@Model.App.Description</p>
+</div>
+<p>Please complete the following details to configure your deployment.</p>
+<form method="post" action="/Deploy/@Model.App.Key" class="well">
+    <fieldset>
+        <legend></legend>
+        <label for="application_name">Application name</label>
+        <input type="text" name="application_name" id="application_name" placeholder="name your deployment..." />
+    </fieldset>
+    <button type="submit" class="btn btn-info btn-large">Deploy</button>
+</form>

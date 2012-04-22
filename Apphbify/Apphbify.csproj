@@ -101,6 +101,7 @@
     <EmbeddedResource Include="Apps.json" />
     <Content Include="Views\SignIn.cshtml" />
     <Content Include="Views\Sites.cshtml" />
+    <Content Include="Views\Deploy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
@@ -108,10 +109,13 @@
     <Compile Include="PagesModule.cs" />
     <Compile Include="PagesModule.Secure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseExtensions.cs" />
+    <Compile Include="Services\BuildService.cs" />
     <Compile Include="Services\OAuth.cs" />
     <Compile Include="SessionKeys.cs" />
     <Compile Include="Data\SitesData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\DeployViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\AppsViewModel.cs" />
     <Compile Include="ViewModels\SitesViewModel.cs" />

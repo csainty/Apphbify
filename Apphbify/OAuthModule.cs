@@ -25,28 +25,17 @@ namespace Apphbify
         private Response SignOut(dynamic parameters)
         {
             Request.Session.DeleteAll();
-            Request.Session[SessionKeys.FLASH_SUCCESS] = "Signed out!";
-            return Response.AsRedirect("/");
+            return Response.AsRedirect("/").WithSuccessFlash(Session, "Signed out!");
         }
 
         private Response Callback(dynamic parameters)
         {
             string access_token = "";
+            if (Request.Query.code.HasValue) access_token = _OAuth.GetAccessToken(Request.Query.code);
+            if (String.IsNullOrEmpty(access_token)) return Response.AsRedirect("/").WithErrorFlash(Session, "There was a problem signing you in. Please try again.");
 
-            if (Request.Query.code.HasValue)
-                access_token = _OAuth.GetAccessToken(Request.Query.code);
-
-            if (String.IsNullOrEmpty(access_token))
-            {
-                Request.Session[SessionKeys.FLASH_ERROR] = "There was a problem signing you in. Please try again.";
-                return Response.AsRedirect("/");
-            }
-            else
-            {
-                Request.Session[SessionKeys.ACCESS_TOKEN] = access_token;
-                Request.Session[SessionKeys.FLASH_SUCCESS] = "Signed in!";
-                return Response.AsRedirect("/Apps");
-            }
+            Request.Session[SessionKeys.ACCESS_TOKEN] = access_token;
+            return Response.AsRedirect("/Apps").WithSuccessFlash(Session, "Signed in!");
         }
     }
 }
