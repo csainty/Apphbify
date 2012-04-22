@@ -1,0 +1,12 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Apphbify.ViewModels.AppsViewModel>
+@{
+    Layout = "Master.cshtml";
+}
+@foreach (var app in Model.Apps)
+{
+    <div class="app">
+        <h2>@app.Name</h2>
+        <p>@app.Description</p>
+        <a href="@app.ProjectUrl" class="btn btn-success btn">Visit Site</a>
+    </div>
+}

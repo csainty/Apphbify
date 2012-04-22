@@ -44,7 +44,7 @@ namespace Apphbify
             {
                 Request.Session[SessionKeys.ACCESS_TOKEN] = access_token;
                 Request.Session[SessionKeys.FLASH_SUCCESS] = "Signed in!";
-                return Response.AsRedirect("/Sites");
+                return Response.AsRedirect("/Apps");
             }
         }
     }

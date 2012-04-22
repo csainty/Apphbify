@@ -3,13 +3,14 @@ using Nancy.Session;
 
 namespace Apphbify.ViewModels
 {
-    public class SitesViewModel : BaseViewModel
+    public class AppsViewModel : BaseViewModel
     {
-        public IList<Site> Sites { get; set; }
+        public IList<App> Apps { get; set; }
 
-        public SitesViewModel(DataStore store, ISession session) : base("Sites", session)
+        public AppsViewModel(DataStore store, ISession session)
+            : base("Apps", session)
         {
-            Sites = store.GetAllSites();
+            Apps = store.GetAllApps();
         }
     }
 }

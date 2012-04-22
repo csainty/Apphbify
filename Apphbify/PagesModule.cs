@@ -11,7 +11,7 @@ namespace Apphbify
         {
             _Store = store;
             Get["/"] = Home;
-            Get["/Sites"] = Sites;
+            Get["/Apps"] = Apps;
         }
 
         private Response Home(dynamic parameters)
@@ -19,9 +19,9 @@ namespace Apphbify
             return View["Home", new BaseViewModel("Home", Request.Session)];
         }
 
-        private Response Sites(dynamic parameters)
+        private Response Apps(dynamic parameters)
         {
-            return View["Sites", new SitesViewModel(_Store, Request.Session)];
+            return View["Apps", new AppsViewModel(_Store, Request.Session)];
         }
     }
 }

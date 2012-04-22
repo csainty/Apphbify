@@ -7,26 +7,26 @@ namespace Apphbify
 {
     public class DataStore
     {
-        private static List<Site> _Sites;
+        private static List<App> _Apps;
 
         public DataStore()
         {
             string json;
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Apphbify.Sites.json"))
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Apphbify.Apps.json"))
             using (var reader = new StreamReader(stream))
             {
                 json = reader.ReadToEnd();
             }
-            _Sites = JsonConvert.DeserializeObject<List<Site>>(json);
+            _Apps = JsonConvert.DeserializeObject<List<App>>(json);
         }
 
-        public IList<Site> GetAllSites()
+        public IList<App> GetAllApps()
         {
-            return _Sites;
+            return _Apps;
         }
     }
 
-    public class Site
+    public class App
     {
         [JsonProperty("name")]
         public string Name { get; set; }

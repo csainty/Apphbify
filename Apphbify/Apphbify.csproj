@@ -97,8 +97,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Sites.cshtml" />
-    <EmbeddedResource Include="Sites.json" />
+    <Content Include="Views\Apps.cshtml" />
+    <EmbeddedResource Include="Apps.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
