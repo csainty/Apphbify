@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Data\Addons.cs" />
     <Compile Include="OAuthModule.cs" />
     <Compile Include="PagesModule.cs" />
     <Compile Include="PagesModule.Secure.cs" />

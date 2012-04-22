@@ -48,5 +48,8 @@ namespace Apphbify
 
         [JsonProperty("download_url")]
         public string DownloadUrl { get; set; }
+
+        [JsonProperty("addons")]
+        public string[] Addons { get; set; }
     }
 }

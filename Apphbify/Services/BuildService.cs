@@ -37,7 +37,7 @@ namespace Apphbify.Services
                 .AddUrlSegment("planId", plan_id)
                 .AddHeader("Authorization", "BEARER " + access_token);
             var response = client.Execute(request);
-            return response.StatusCode == HttpStatusCode.Created;
+            return response.StatusCode == HttpStatusCode.OK;
         }
     }
 }
