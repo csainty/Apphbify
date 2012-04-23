@@ -16,6 +16,7 @@
     <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <JSLintSkip>\Content\js\bootstrap.js|\Content\js\jquery-1.7.2.js|\Content\js\apphbify.min.js</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,6 +89,7 @@
     </Content>
     <None Include="Content\js\bootstrap.js" />
     <None Include="Content\js\jquery-1.7.2.js" />
+    <EmbeddedResource Include="favicon.ico" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
