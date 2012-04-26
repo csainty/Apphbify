@@ -115,7 +115,9 @@
     <Compile Include="ResponseExtensions.cs" />
     <Compile Include="Services\ApiService.cs" />
     <Compile Include="Services\DeploymentService.cs" />
+    <Compile Include="Services\IMailService.cs" />
     <Compile Include="Services\OAuth.cs" />
+    <Compile Include="Services\SendGridMailService.cs" />
     <Compile Include="SessionKeys.cs" />
     <Compile Include="Data\SitesData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

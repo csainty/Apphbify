@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Reflection;
 using Apphbify.Services;
 using Nancy;
@@ -27,6 +28,16 @@ namespace Apphbify
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
             container.Register<DataStore>(new DataStore()); // Singleton over the application lifetime
+
+            // Choose between mail services based on whether we are live or in test.
+            if (!String.IsNullOrEmpty(ConfigurationManager.AppSettings["SENDGRID_USERNAME"]))
+            {
+                container.Register<IMailService, SendGridMailService>().AsMultiInstance();
+            }
+            else
+            {
+                container.Register<IMailService, NullMailService>().AsMultiInstance();
+            }
         }
 
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
