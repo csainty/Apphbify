@@ -16,7 +16,7 @@
     <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <JSLintSkip>\Content\js\bootstrap.js|\Content\js\jquery-1.7.2.js|\Content\js\apphbify.min.js</JSLintSkip>
+    <JSLintSkip>\Content\js\bootstrap.js|\Content\js\jquery-1.7.2.js|\Content\js\apphbify.min.js|\Content\js\bootstrap.modal.js</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -90,6 +90,13 @@
     <None Include="Content\js\bootstrap.js" />
     <None Include="Content\js\jquery-1.7.2.js" />
     <EmbeddedResource Include="favicon.ico" />
+    <Content Include="Content\js\bootstrap.modal.js" />
+    <Content Include="Content\js\bootstrap.tooltip.js" />
+    <Content Include="Content\js\Main.js" />
+    <Content Include="Content\js\Sites.min.js">
+      <DependentUpon>Sites.uglify.js</DependentUpon>
+    </Content>
+    <Content Include="Content\js\Sites.uglify.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
