@@ -4,7 +4,7 @@ using RestSharp;
 
 namespace Apphbify.Services
 {
-    public static class BuildService
+    public static class ApiService
     {
         public static bool DeployBuild(string access_token, string application_slug, string download_url)
         {

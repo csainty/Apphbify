@@ -1,7 +1,5 @@
 ﻿using System;
 using AppHarbor;
-using AppHarbor.Model;
-using Apphbify.Data;
 using Apphbify.Services;
 using Apphbify.ViewModels;
 using Nancy;
@@ -42,39 +40,25 @@ namespace Apphbify
             string appName = Request.Form.application_name;
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
             if (String.IsNullOrWhiteSpace(appName)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
-
-            var result = _Api.CreateApplication(appName, "amazon-web-services::us-east-1");
-            if (result.Status != CreateStatus.Created) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem creating the application at AppHarbor.");
-
             string access_token = (string)Session[SessionKeys.ACCESS_TOKEN];
+            string slug = "";
 
-            // Attempt to disable precompilation. Not fatal if it fails.
-            BuildService.DisablePreCompilation(access_token, result.ID);
+            var result = DeploymentService.Deploy(_Api, access_token, appName, app, out slug);
 
-            // Configure file system access
-            if (app.EnableFileSystem)
-                BuildService.EnableFileSystem(access_token, result.ID);
-
-            // Deploy the first code bundle
-            if (!BuildService.DeployBuild(access_token, result.ID, app.DownloadUrl)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem deploying the application.");
-
-            // Try to install all addons, even if one fails, and report on failure at the end.
-            bool addonsOk = true;
-            foreach (var addon in app.Addons)
+            // TODO: Log errors here, we want to know whether the API or the app config is at fault.
+            switch (result)
             {
-                if (Addons.Supported.ContainsKey(addon))
-                {
-                    if (!BuildService.EnableAddon(access_token, result.ID, addon, Addons.Supported[addon]))
-                        addonsOk = false;
-                }
-                else
-                {
-                    addonsOk = false;
-                }
+                case DeploymentResult.UnableToCreateApplication:
+                    return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem creating the application at AppHarbor.");
+                case DeploymentResult.UnableToDeployCode:
+                    return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem deploying the application.");
+                case DeploymentResult.ErrorInstallingAddons:
+                    return Response.AsRedirect("/Sites").WithErrorFlash(Session, "Your site has been deployed but there were problems installing all required addons. The site may not operate as expected.");
+                case DeploymentResult.Success:
+                    return Response.AsRedirect("/Sites").WithSuccessFlash(Session, String.Format("{0} deployed into site {1} ({2})", app.Name, appName, slug));
+                default:
+                    return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem deploying the application. Double check your deployed application to see whether it was successful or not");
             }
-            if (!addonsOk) return Response.AsRedirect("/Sites").WithErrorFlash(Session, "Your site has been deployed but there were problems installing all required addons. The site may not operate as expected.");
-
-            return Response.AsRedirect("/Sites").WithSuccessFlash(Session, String.Format("{0} deployed into site {1} ({2})", app.Name, appName, result.ID));
         }
 
         private Response CheckAuth(NancyContext ctx)
