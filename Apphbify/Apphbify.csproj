@@ -16,7 +16,7 @@
     <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <JSLintSkip>\Content\js\bootstrap.js|\Content\js\jquery-1.7.2.js|\Content\js\apphbify.min.js|\Content\js\bootstrap.modal.js</JSLintSkip>
+    <JSLintSkip>\Content\js\bootstrap.js|\Content\js\jquery-1.7.2.js|\Content\js\apphbify.min.js|\Content\js\bootstrap.modal.js|\Content\js\bootstrap.tooltip.js</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -115,6 +115,8 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Data\Addons.cs" />
+    <Compile Include="HookModule.cs" />
+    <Compile Include="Models\ServiceHookModel.cs" />
     <Compile Include="OAuthModule.cs" />
     <Compile Include="PagesModule.cs" />
     <Compile Include="PagesModule.Secure.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="Data\SitesData.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\DeployViewModel.cs" />
+    <Compile Include="ViewModels\JsonResult.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\AppsViewModel.cs" />
     <Compile Include="ViewModels\SitesViewModel.cs" />

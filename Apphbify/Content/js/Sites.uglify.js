@@ -30,8 +30,12 @@
       url: '/Sites/' + emailEnableSlug + '/Notifications/Email',
       data: { email: email },
       success: function (data) {
-        $emailEnableModal.modal('hide');
-        $status.html('');
+        if (data && data.ok) {
+          $emailEnableModal.modal('hide');
+          $status.html('');
+        } else {
+          $status.html('<span class="label label-important">' + data.message || 'An error occurred.' + '</span>');
+        }
       },
       error: function () {
         $status.html('<span class="label label-important">Unable to complete at this time.</span>');

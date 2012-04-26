@@ -1,5 +1,6 @@
 ﻿using System;
 using AppHarbor;
+using AppHarbor.Model;
 using Apphbify.Services;
 using Apphbify.ViewModels;
 using Nancy;
@@ -17,6 +18,7 @@ namespace Apphbify
             Before.AddItemToEndOfPipeline(CheckAuth);
 
             Get["/Sites"] = Sites;
+            Put["/Sites/{slug}/Notifications/Email"] = EnableEmailNotification;
             Get["/Deploy/{key}"] = Deploy;
             Post["/Deploy/{key}"] = DoDeploy;
         }
@@ -24,6 +26,21 @@ namespace Apphbify
         private Response Sites(dynamic parameters)
         {
             return View["Sites", new SitesViewModel(_Api, Request.Session)];
+        }
+
+        private Response EnableEmailNotification(dynamic parameters)
+        {
+            string email = Request.Form["email"];
+            string slug = parameters.slug;
+            if (String.IsNullOrEmpty(email))
+                return Response.AsJson(JsonResult.Error("Please provide an email address."), HttpStatusCode.BadRequest);
+
+            var result = _Api.CreateServicehook(slug, String.Format("http://appharbify.com/Sites/{0}/NotifyByEmail?email={1}", slug, Uri.EscapeDataString(email)));
+
+            if (result.Status != CreateStatus.Created)
+                return Response.AsJson(JsonResult.Error("Unable to add service hook."), HttpStatusCode.BadRequest);
+
+            return Response.AsJson(JsonResult.OK());
         }
 
         private Response Deploy(dynamic parameters)
