@@ -13,8 +13,8 @@
         <p>@app.Description</p>
         @if (Model.IsLoggedOn)
         {
-            <a href="/Deploy/@app.Key" class="btn btn-info">Deploy</a>
+            <a href="/Deploy/@app.Key" class="btn btn-info" rel="nofollow">Deploy</a>
         }
-        <a href="@app.ProjectUrl" class="btn btn-success">Visit Project Site</a>
+        <a href="@app.ProjectUrl" class="btn btn-success" rel="external">Visit Project Site</a>
     </div>
 }
