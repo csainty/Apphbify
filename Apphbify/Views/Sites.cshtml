@@ -4,23 +4,16 @@
 }
 <div class="page-header">
     <h1>Deployed Sites</h1>
-    <p>A list of the sites you curently have running on AppHarbor.<br />
-        You can enable build status notifications by simply clicking on the buttons in the notifications column.</p>
 </div>
+<p>A list of the sites you curently have running on AppHarbor.<br />
+    You can enable build status notifications by simply clicking on the buttons in the notifications column.</p>
 <table class="table table-bordered table-striped" id="sitesTable">
-    <thead>
-        <tr>
-            <th>Site Name (slug)</th>
-            <th>Notifications</th>
-            <th>AppHarbor Links</th>
-        </tr>
-    </thead>
     <tbody>
         @foreach (var site in Model.Sites)
         {
-            <tr data-slug="@site.Slug">
+            <tr class="site" data-slug="@site.Slug">
                 <td>
-                    <h4>@site.Name (@site.Slug)</h4>
+                    <h3>@site.Name (@site.Slug)</h3>
                 </td>
                 <td>
                     <button class="btn btn-info enable-email-notification">Email</button>

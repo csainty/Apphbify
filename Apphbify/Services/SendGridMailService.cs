@@ -16,7 +16,7 @@ namespace Apphbify.Services
                     client.Credentials = new NetworkCredential(ConfigurationManager.AppSettings["SENDGRID_USERNAME"], ConfigurationManager.AppSettings["SENDGRID_PASSWORD"]);
 
                     msg.To.Add(toAddress);
-                    msg.From = new MailAddress("no-reply@appharbify.com", "Appharbify");
+                    msg.From = new MailAddress("no-reply@appharbify.com", "AppHarbify");
                     msg.Subject = subject;
                     msg.Body = body;
                     msg.IsBodyHtml = false;

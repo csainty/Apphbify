@@ -4,17 +4,19 @@
 }
 <div class="page-header">
     <h1>Apps</h1>
-    <p>Browse through the apps and see what you can deploy</p>
 </div>
-@foreach (var app in Model.Apps)
-{
-    <div class="app">
-        <h2>@app.Name</h2>
-        <p>@app.Description</p>
-        @if (Model.IsLoggedOn)
+<p>Browse through the apps and see what you can deploy</p>
+<table class="table table-bordered table-striped" id="appsTable">
+    <tbody>
+        @foreach (var app in Model.Apps)
         {
-            <a href="/Deploy/@app.Key" class="btn btn-info" rel="nofollow">Deploy</a>
+            <tr class="app">
+                <td>
+                    <h3>@app.Name</h3>
+                    <p>@app.Description</p>
+                </td>
+                <td><a href="/Deploy/@app.Key" class="btn btn-info" rel="nofollow">Deploy</a> <a href="@app.ProjectUrl" class="btn btn-success" rel="external">Visit Project Site</a> </td>
+            </tr>
         }
-        <a href="@app.ProjectUrl" class="btn btn-success" rel="external">Visit Project Site</a>
-    </div>
-}
+    </tbody>
+</table>

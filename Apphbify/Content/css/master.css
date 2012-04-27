@@ -1,4 +1,22 @@
-﻿footer {
+﻿body, p, input, button, select, textarea {
+    font-family: UbuntuLight, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+header .brand {
+    font-family: BallparkWeiner, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+}
+
+.hero-unit h1, .page-header h1, .app h3, .site h3 {
+    font-family: QuicksandLight, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+
+.hero-unit p {
+    font-size: 16px;
+}
+
+footer {
     margin-top: 1em;
     text-align: center;
 }

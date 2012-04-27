@@ -26,7 +26,7 @@ namespace Apphbify
             if (String.IsNullOrEmpty(email))
                 return HttpStatusCode.BadRequest;
 
-            string body = String.Format("Application: {0}\nStatus: {1}\nCommit Id: {2}\nCommit Message: {3}\n\nNotifications by Appharbify - http://appharbify.com", slug, data.Build.Status, data.Build.Commit.Id, data.Build.Commit.Message);
+            string body = String.Format("Application: {0}\nStatus: {1}\nCommit Id: {2}\nCommit Message: {3}\n\nNotifications by AppHarbify - http://appharbify.com", slug, data.Build.Status, data.Build.Commit.Id, data.Build.Commit.Message);
             string subject = String.Format("AppHarbor Build Notification - {0}: {1}", slug, data.Build.Status);
             _Mail.SendEmail(email, subject, body);
 
