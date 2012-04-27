@@ -3,17 +3,48 @@
     font-size: 14px;
 }
 
-header .brand {
-    font-family: BallparkWeiner, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+header .navbar-inner {
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
-.hero-unit h1, .page-header h1, .app h3, .site h3 {
+header .navbar .brand {
+    font-family: BallparkWeiner, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+    font-size: 36px;
+    margin-right: 15px;
+}
+
+header .navbar li {
+    padding-top: 11px;
+    font-size: 16px;
+}
+
+.hero-unit h1, .page-header h1 {
     font-family: QuicksandLight, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
     font-weight: normal;
 }
 
+.hero-unit h1 {
+    padding-bottom: 12px;
+}
+
 .hero-unit p {
     font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.app h3, .site h3 {
+    font-family: QuicksandBook, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    xxxcolor: #000;
+}
+
+.alert {
+    font-style: italic;
+}
+
+.alert-heading{
+    font-style: normal;
 }
 
 footer {
