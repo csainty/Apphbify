@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AppHarbor;
 using AppHarbor.Model;
 using Apphbify.Services;
@@ -57,10 +58,20 @@ namespace Apphbify
             string appName = Request.Form.application_name;
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
             if (String.IsNullOrWhiteSpace(appName)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
+
             string access_token = (string)Session[SessionKeys.ACCESS_TOKEN];
             string slug = "";
 
-            var result = DeploymentService.Deploy(_Api, access_token, appName, app, out slug);
+            // Build set of variables that need to be added to the application
+            var variables = new Dictionary<string, string>();
+            foreach (var variable in app.Variables)
+            {
+                string value = Request.Form[variable.Key];
+                if (!String.IsNullOrEmpty(value))
+                    variables.Add(variable.Key, value);
+            }
+
+            var result = DeploymentService.Deploy(_Api, access_token, appName, app, variables, out slug);
 
             // TODO: Log errors here, we want to know whether the API or the app config is at fault.
             switch (result)
@@ -71,6 +82,8 @@ namespace Apphbify
                     return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "There was a problem deploying the application.");
                 case DeploymentResult.ErrorInstallingAddons:
                     return Response.AsRedirect("/Sites").WithErrorFlash(Session, "Your site has been deployed but there were problems installing all required addons. The site may not operate as expected.");
+                case DeploymentResult.ErrorSettingVariables:
+                    return Response.AsRedirect("/Sites").WithErrorFlash(Session, "Your site has been deployed but there were problems setting all the configuration variables. The site may not operate as expected, please log in to AppHarbor to confirm.");
                 case DeploymentResult.Success:
                     return Response.AsRedirect("/Sites").WithSuccessFlash(Session, String.Format("{0} deployed into site {1} ({2})", app.Name, appName, slug));
                 default:

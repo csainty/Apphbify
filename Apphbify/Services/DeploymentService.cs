@@ -1,4 +1,5 @@
-﻿using AppHarbor;
+﻿using System.Collections.Generic;
+using AppHarbor;
 using AppHarbor.Model;
 using Apphbify.Data;
 
@@ -6,8 +7,10 @@ namespace Apphbify.Services
 {
     public static class DeploymentService
     {
-        public static DeploymentResult Deploy(AppHarborApi api, string access_token, string siteName, App application, out string slug)
+        public static DeploymentResult Deploy(AppHarborApi api, string access_token, string siteName, App application, Dictionary<string, string> variables, out string slug)
         {
+            bool variablesOk = true;
+            bool addonsOk = true;
             slug = "";
 
             // Create the application at AppHarbor and store away the slug
@@ -22,11 +25,17 @@ namespace Apphbify.Services
             if (application.EnableFileSystem)
                 ApiService.EnableFileSystem(access_token, slug);
 
+            // Set configuration variables
+            foreach (var variable in variables)
+            {
+                if (api.CreateConfigurationVariable(slug, variable.Key, variable.Value).Status != CreateStatus.Created)
+                    variablesOk = false;
+            }
+
             // Deploy the first code bundle
             if (!ApiService.DeployBuild(access_token, slug, application.DownloadUrl)) return DeploymentResult.UnableToDeployCode;
 
-            // Try to install all addons, even if one fails, and report on failure at the end.
-            bool addonsOk = true;
+            // Install addons
             foreach (var addon in application.Addons)
             {
                 if (Addons.Supported.ContainsKey(addon))
@@ -39,6 +48,9 @@ namespace Apphbify.Services
                     addonsOk = false;
                 }
             }
+
+            // Check for non-critical failures
+            if (!variablesOk) return DeploymentResult.ErrorSettingVariables;
             if (!addonsOk) return DeploymentResult.ErrorInstallingAddons;
 
             return DeploymentResult.Success;
@@ -50,6 +62,7 @@ namespace Apphbify.Services
         Success,
         UnableToCreateApplication,
         UnableToDeployCode,
-        ErrorInstallingAddons
+        ErrorInstallingAddons,
+        ErrorSettingVariables
     }
 }
