@@ -18,7 +18,9 @@ namespace Apphbify
             {
                 json = reader.ReadToEnd();
             }
-            _Apps = JsonConvert.DeserializeObject<List<App>>(json);
+            _Apps = JsonConvert.DeserializeObject<List<App>>(json)
+                .OrderBy(d => d.Name.ToLowerInvariant())
+                .ToList();
         }
 
         public IList<App> GetAllApps()
@@ -54,5 +56,8 @@ namespace Apphbify
 
         [JsonProperty("enableFileSystem")]
         public bool EnableFileSystem { get; set; }
+
+        [JsonProperty("variables")]
+        public Dictionary<string, string> Variables { get; set; }
     }
 }

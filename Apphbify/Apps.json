@@ -16,5 +16,19 @@
     download_url: 'https://github.com/csainty/Ideastrike/tarball/apphbify',
     addons: ['sqlserver'],
     enableFileSystem: false
+  },
+  {
+    key: 'jabbr',
+    name: 'JabbR',
+    description: 'JabbR is a chat application built with ASP.NET using SignalR.',
+    project_url: 'https://github.com/davidfowl/JabbR',
+    download_url: 'https://github.com/csainty/JabbR/tarball/appharbor',
+    addons: ['sqlserver'],
+    enableFileSystem: false,
+    variables: {
+      'auth.apiKey': 'Janrain API key',
+      'auth.appName': 'Janrain application name',
+      'googleAnalytics': 'Google analytics key'
+    }
   }
 ]
