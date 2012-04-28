@@ -19,7 +19,7 @@ header .navbar li {
     font-size: 16px;
 }
 
-.hero-unit h1, .page-header h1 {
+.hero-unit h1, .page-header h1, h2 {
     font-family: QuicksandLight, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
     font-weight: normal;
 }
@@ -36,7 +36,6 @@ header .navbar li {
 .app h3, .site h3 {
     font-family: QuicksandBook, "Helvetica Neue" ,Helvetica,Arial,sans-serif;
     font-weight: normal;
-    xxxcolor: #000;
 }
 
 .alert {

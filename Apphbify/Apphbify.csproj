@@ -182,6 +182,7 @@
     <Content Include="Views\SignIn.cshtml" />
     <Content Include="Views\Sites.cshtml" />
     <Content Include="Views\Deploy.cshtml" />
+    <Content Include="Views\About.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
