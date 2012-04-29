@@ -95,7 +95,7 @@ namespace Apphbify
         {
             var token = ctx.Request.Session[SessionKeys.ACCESS_TOKEN] as string;
             if (String.IsNullOrEmpty(token))
-                return Response.AsRedirect("/SignIn");
+                return Response.AsRedirect("/SignIn?redirect=" + Uri.EscapeDataString(ctx.Request.Path));
             _Api = new AppHarborApi(new AuthInfo { AccessToken = token, TokenType = "Bearer" });
             return null;
         }

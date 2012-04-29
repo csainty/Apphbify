@@ -19,6 +19,8 @@ namespace Apphbify
 
         private Response SignIn(dynamic parameters)
         {
+            string redirect = Request.Query.redirect.HasValue ? Request.Query.redirect : "";
+            Session[SessionKeys.SIGN_IN_REDIRECT] = redirect;
             return View["SignIn", new SignInViewModel(_OAuth, Request.Session)];
         }
 
@@ -34,8 +36,14 @@ namespace Apphbify
             if (Request.Query.code.HasValue) access_token = _OAuth.GetAccessToken(Request.Query.code);
             if (String.IsNullOrEmpty(access_token)) return Response.AsRedirect("/").WithErrorFlash(Session, "There was a problem signing you in. Please try again.");
 
-            Request.Session[SessionKeys.ACCESS_TOKEN] = access_token;
-            return Response.AsRedirect("/Apps").WithSuccessFlash(Session, "Signed in!");
+            Session[SessionKeys.ACCESS_TOKEN] = access_token;
+
+            string redirect = (string)Session[SessionKeys.SIGN_IN_REDIRECT];
+            if (String.IsNullOrEmpty(redirect))
+                redirect = "/Apps";
+            Session.Delete(SessionKeys.SIGN_IN_REDIRECT);
+
+            return Response.AsRedirect(redirect).WithSuccessFlash(Session, "Signed in!");
         }
     }
 }
