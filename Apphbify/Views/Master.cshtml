@@ -11,20 +11,31 @@
     <header>
         <div class="navbar">
             <div class="navbar-inner">
-                <div class="container"><a class="brand" href="/">AppHarbify!</a>
+                <div class="container">
+                    <a class="brand" href="/">AppHarbify!</a>
                     <ul class="nav">
-                        <li class="@(Model.CurrentPage == "Home" ? "active" : "")"><a href="/">Home</a></li>
-                        <li class="@(Model.CurrentPage == "Apps" ? "active" : "")"><a href="/Apps">Apps</a></li>
-                        <li class="@(Model.CurrentPage == "Sites" ? "active" : "")"><a href="/Sites">Deployed Sites</a></li>
+                        <li class="@(Model.CurrentPage == "Home" ? "active" : "")">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="@(Model.CurrentPage == "Apps" ? "active" : "")">
+                            <a href="/Apps">Apps</a>
+                        </li>
+                        <li class="@(Model.CurrentPage == "Sites" ? "active" : "")">
+                            <a href="/Sites">Deployed Sites</a>
+                        </li>
                     </ul>
                     <ul class="nav pull-right">
                         @if (Model.IsLoggedOn)
                         {
-                            <li><a href="/SignOut">Sign Out</a></li>
+                            <li>
+                                <a href="/SignOut">Sign Out</a>
+                            </li>
                         }
                         else
                         {
-                            <li class="@(Model.CurrentPage == "SignIn" ? "active" : "")"><a href="/SignIn">Sign In</a></li>
+                            <li class="@(Model.CurrentPage == "SignIn" ? "active" : "")">
+                                <a href="/SignIn">Sign In</a>
+                            </li>
                         }
                     </ul>
                 </div>
@@ -34,13 +45,15 @@
     <div class="container">
         @if (Model.HasErrorFlash)
         {
-            <div class="alert alert-error"><a class="close" data-dismiss="alert">x</a>
+            <div class="alert alert-error">
+                <a class="close" data-dismiss="alert">x</a>
                 <p>@Model.ErrorFlash</p>
             </div>
         }
         @if (Model.HasSuccessFlash)
         {
-            <div class="alert alert-success"><a class="close" data-dismiss="alert">x</a>
+            <div class="alert alert-success">
+                <a class="close" data-dismiss="alert">x</a>
                 <p>@Model.SuccessFlash</p>
             </div>
         }
@@ -49,10 +62,19 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="span12">AppHarbify is open source. To contribute or add your own projects, <a href="https://github.com/csainty/Apphbify" rel="external" target="_blank">fork it on GitHub</a>!</div>
+                <div class="span12">
+                    AppHarbify is open source. To contribute or add your own projects,
+                    <a href="https://github.com/csainty/Apphbify" rel="external" target="_blank">fork it on GitHub</a>!
+                </div>
             </div>
             <div class="row">
-                <div class="span12"><a href="/About">About AppHarbify</a> | <a href="https://trello.com/board/appharbify/4f9a781817171c492a6ef9db" rel="external" target="_blank">Trello</a> | <a href="https://github.com/csainty/Apphbify" rel="external" target="_blank">GitHub</a></div>
+                <div class="span12">
+                    <a href="/About">About AppHarbify</a>
+                    |
+                    <a href="https://trello.com/board/appharbify/4f9a781817171c492a6ef9db" rel="external" target="_blank">Trello</a>
+                    |
+                    <a href="https://github.com/csainty/Apphbify" rel="external" target="_blank">GitHub</a>
+                </div>
             </div>
         </div>
     </footer>

@@ -5,7 +5,9 @@
 <div class="page-header">
     <h1>Apps</h1>
 </div>
-<p>Browse through the apps and see what you can deploy</p>
+<p>
+    Browse through the apps and see what you can deploy
+</p>
 <table class="table table-bordered table-striped" id="appsTable">
     <tbody>
         @foreach (var app in Model.Apps)
@@ -15,7 +17,10 @@
                     <h3>@app.Name</h3>
                     <p>@app.Description</p>
                 </td>
-                <td><a href="/Deploy/@app.Key" class="btn btn-info" rel="nofollow">Deploy</a> <a href="@app.ProjectUrl" class="btn btn-success" rel="external">Visit Project Site</a> </td>
+                <td>
+                    <a href="/Deploy/@app.Key" class="btn btn-info" rel="nofollow">Deploy</a>
+                    <a href="@app.ProjectUrl" class="btn btn-success" rel="external">Visit Project Site</a>
+                </td>
             </tr>
         }
     </tbody>

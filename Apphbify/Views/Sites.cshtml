@@ -5,8 +5,10 @@
 <div class="page-header">
     <h1>Deployed Sites</h1>
 </div>
-<p>A list of the sites you curently have running on AppHarbor.<br />
-    You can enable build status notifications by simply clicking on the buttons in the notifications column.</p>
+<p>
+    A list of the sites you curently have running on AppHarbor.<br />
+    You can enable build status notifications by simply clicking on the buttons in the notifications column.
+</p>
 <table class="table table-bordered table-striped" id="sitesTable">
     <tbody>
         @foreach (var site in Model.Sites)
@@ -18,7 +20,10 @@
                 <td>
                     <button class="btn btn-info enable-email-notification">Email</button>
                 </td>
-                <td><a href="@site.Url" class="btn btn-small btn-success" target="_blank" rel="external nofollow">Configuration</a> <a href="http://@(site.Slug).apphb.com/" class="btn btn-small btn-success" target="_blank" rel="external">View Site</a> </td>
+                <td>
+                    <a href="@site.Url" class="btn btn-small btn-success" target="_blank" rel="external nofollow">Configuration</a>
+                    <a href="http://@(site.Slug).apphb.com/" class="btn btn-small btn-success" target="_blank" rel="external">View Site</a>
+                </td>
             </tr>
         }
     </tbody>
@@ -29,13 +34,17 @@
         <h3>Enable Email Notification</h3>
     </div>
     <div class="modal-body">
-        <p>Enter an email address to have notifcations sent to you when each build is finished.</p>
+        <p>
+            Enter an email address to have notifcations sent to you when each build is finished.
+        </p>
         <input type="text" placeholder="Email Address..." id="emailAddress" />
         <span class="badge badge-error hide tt" id="emailAddressError" rel="tooltip" title="Please enter an email address">!</span>
     </div>
     <div class="modal-footer">
-        <a href="#" class="btn btn-primary" id="confirmEmailButton">Enable</a> <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-        <p id="emailStatus"></p>
+        <a href="#" class="btn btn-primary" id="confirmEmailButton">Enable</a>
+        <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+        <p id="emailStatus">
+        </p>
     </div>
 </div>
 @section Scripts {
