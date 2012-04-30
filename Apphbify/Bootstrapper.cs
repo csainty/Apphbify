@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Configuration;
-using System.Reflection;
+using Apphbify.Resources;
 using Apphbify.Services;
 using Nancy;
 using Nancy.Bootstrapper;
@@ -11,19 +11,12 @@ namespace Apphbify
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
-        private byte[] _FavIcon;
+        protected override byte[] DefaultFavIcon { get { return StaticResources.FavIcon; } }
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
-            using (var favIconStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Apphbify.favicon.ico"))
-            {
-                _FavIcon = new byte[favIconStream.Length];
-                favIconStream.Read(_FavIcon, 0, (int)favIconStream.Length);
-            }
             CookieBasedSessions.Enable(pipelines);
         }
-
-        protected override byte[] DefaultFavIcon { get { return _FavIcon ?? base.DefaultFavIcon; } }
 
         protected override void ConfigureApplicationContainer(TinyIoCContainer container)
         {
