@@ -30,5 +30,18 @@
       'auth.appName': 'Janrain application name',
       'googleAnalytics': 'Google analytics key'
     }
+  },
+  {
+    key: 'funnelweb',
+    name: 'FunnelWeb',
+    description: 'FunnelWeb is an open source blog engine targeted at developers.',
+    project_url: 'http://funnelweblog.com/',
+    download_url: 'https://github.com/csainty/FunnelWeb-Built/tarball/master',
+    addons: ['sqlserver'],
+    enableFileSystem: false,
+    variables: {
+      'funnelweb.configuration.authentication.username': 'Admin username',
+      'funnelweb.configuration.authentication.password': 'Admin password'
+    }
   }
 ]
