@@ -1,4 +1,4 @@
-#Appharbify
+#AppHarbify
 
 Instantly deploy open source application into the [AppHarbor](http://appharbor.com) cloud platform.
 
@@ -17,6 +17,11 @@ Here is an example of what you need to add
   'project_url': 'link to the project homepage',  
   'download_url': 'link to gzipped tarball of source to be deployed, github helpfully provides these',  
   'addons': ['an', 'array', 'of', 'addons', 'to', 'install'],  
+  'variables': {
+    'variable_name': 'variable description',
+    'second_variable': 'description'  
+    // A hash of variables that the user can configure. These are injected into web.config/appSettings
+  },  
   'enableFileSystem': true/false  // Controls whether to enable file system access on AppHarbor  
 }  
 ```
