@@ -16,7 +16,7 @@
     <UseIISExpress>true</UseIISExpress>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <JSLintSkip>\Content\js\bootstrap.js|\Content\js\jquery-1.7.2.js|\Content\js\apphbify.min.js|\Content\js\bootstrap.modal.js|\Content\js\bootstrap.tooltip.js</JSLintSkip>
+    <JSLintSkip>\Content\js\bootstrap.js|\Content\js\jquery-1.7.2.js|\Content\js\apphbify.min.js|\Content\js\bootstrap.modal.js|\Content\js\bootstrap.tooltip.js|\Content\js\jquery-1.7.2.min.js</JSLintSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,7 +82,7 @@
     <None Include="Content\css\bootstrap-responsive.css" />
     <None Include="Content\css\bootstrap.css" />
     <None Include="Content\css\master.css" />
-    <Content Include="Content\css\fonts.css" />
+    <None Include="Content\css\fonts.css" />
     <Content Include="Content\fonts\ballpark_weiner-webfont.svg" />
     <Content Include="Content\fonts\Mickey Rossi License.txt" />
     <Content Include="Content\fonts\Quicksand SIL OFL License 1.1.txt" />
@@ -159,15 +159,15 @@
     <Content Include="Content\fonts\Ubuntu-RI-webfont.ttf" />
     <Content Include="Content\fonts\Ubuntu-RI-webfont.woff" />
     <None Include="Content\js\bootstrap.js" />
-    <None Include="Content\js\jquery-1.7.2.js" />
     <EmbeddedResource Include="favicon.ico" />
-    <Content Include="Content\js\bootstrap.modal.js" />
-    <Content Include="Content\js\bootstrap.tooltip.js" />
-    <Content Include="Content\js\Main.js" />
+    <None Include="Content\js\bootstrap.modal.js" />
+    <None Include="Content\js\bootstrap.tooltip.js" />
+    <Content Include="Content\js\jquery-1.7.2.min.js" />
+    <None Include="Content\js\Main.js" />
     <Content Include="Content\js\Sites.min.js">
       <DependentUpon>Sites.uglify.js</DependentUpon>
     </Content>
-    <Content Include="Content\js\Sites.uglify.js" />
+    <None Include="Content\js\Sites.uglify.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

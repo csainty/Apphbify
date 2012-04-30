@@ -1,9 +1,12 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Apphbify.ViewModels.BaseViewModel>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>AppHarbify</title>
+    <meta name="description" content="Instantly deploy open source software to AppHarbor">
+    <meta name="viewport" content="width=device-width">
     <link href="/Content/css/apphbify.min.css" rel="stylesheet" type="text/css" />
     @RenderSection("Head", false)
 </head>
@@ -78,19 +81,21 @@
             </div>
         </div>
     </footer>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        window.jQuery || document.write('<script type="text/javascript" src="/Content/js/jquery-1.7.2.min.js"><\/script>')
+    </script>
     <script src="/Content/js/apphbify.min.js"></script>
     @RenderSection("Scripts", false)
     @if (!String.IsNullOrEmpty(Model.GoogleAnalyticsKey))
     {
         <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', '@Model.GoogleAnalyticsKey']);
-            _gaq.push(['_trackPageview']);
-            (function () {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
+            var _gaq = [['_setAccount', '@Model.GoogleAnalyticsKey'], ['_trackPageview']];
+            (function (d, t) {
+                var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+                g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+                s.parentNode.insertBefore(g, s)
+            } (document, 'script'));
         </script>
     }
 </body>
