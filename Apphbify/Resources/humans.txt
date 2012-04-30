@@ -1,0 +1,12 @@
+﻿/* TEAM */
+Developer: Chris Sainty
+Site: http://blog.csainty.com
+Twitter: @csainty
+From: Newcastle, Australia.
+
+/* THANKS */
+Hosting: AppHarbor
+Site: http://appharbor.com- 
+
+/* SITE */
+Software: C#, NancyFx, AppHarbor.NET, RestSharp, JSON.NET

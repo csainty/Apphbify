@@ -9,11 +9,13 @@ namespace Apphbify.Resources
     {
         public static byte[] FavIcon;
         public static byte[] Robots;
+        public static byte[] Humans;
 
         static StaticResources()
         {
             FavIcon = ReadFile("favicon.ico");
             Robots = ReadFile("robots.txt");
+            Humans = ReadFile("humans.txt");
         }
 
         private static byte[] ReadFile(string name)
@@ -39,6 +41,7 @@ namespace Apphbify.Resources
         public void Initialize(IPipelines pipelines)
         {
             RegisterFile("/robots.txt", StaticResources.Robots, pipelines);
+            RegisterFile("/humans.txt", StaticResources.Humans, pipelines);
         }
 
         private void RegisterFile(string name, byte[] data, IPipelines pipelines)

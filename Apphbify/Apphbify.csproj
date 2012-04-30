@@ -169,6 +169,7 @@
     </Content>
     <None Include="Content\js\Sites.uglify.js" />
     <EmbeddedResource Include="Resources\robots.txt" />
+    <EmbeddedResource Include="Resources\humans.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
