@@ -1,5 +1,15 @@
 ﻿[
   {
+    key: 'wordpress',
+    name: 'WordPress (beta)',
+    description: 'WordPress is an open source blogging tool and a content management system (CMS) based on PHP and MySQL.',
+    project_url: 'https://github.com/appharbor/Wordpress',
+    download_url: 'https://github.com/appharbor/Wordpress/tarball/master',
+    addons: ['mysql'],
+    enableFileSystem: true,
+    variables: { }
+  },
+  {
     key: 'saywat',
     name: 'SayWat',
     description: 'Find the meaning of regional words and sayings.',
