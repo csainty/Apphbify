@@ -70,8 +70,10 @@
     <Compile Include="DataStoreTests\GetAllApps.cs" />
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
     <Compile Include="Helpers\TestingSession.cs" />
+    <Compile Include="Pages\About\When_displaying_the_about_page.cs" />
+    <Compile Include="Pages\Apps\When_displaying_the_apps_page.cs" />
     <Compile Include="Pages\Home\When_displaying_the_home_page.cs" />
-    <Compile Include="Pages\Home\When_no_user_is_logged_on.cs" />
+    <Compile Include="Pages\Master\When_no_user_is_logged_on.cs" />
     <Compile Include="Pages\Master\When_an_error_message_is_present.cs" />
     <Compile Include="Pages\Master\When_a_success_message_is_present.cs" />
     <Compile Include="Pages\Master\When_user_is_logged_on.cs" />
@@ -89,6 +91,7 @@
       <Name>Apphbify</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <PropertyGroup>
