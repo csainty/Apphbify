@@ -4,17 +4,17 @@ using Xunit;
 
 namespace Apphbify.Tests.ResourcesTests
 {
-    public class StaticFileRoutes
+    public class When_requesting_static_content
     {
         private readonly Browser _Browser;
 
-        public StaticFileRoutes()
+        public When_requesting_static_content()
         {
             _Browser = new Browser(new TestingBootstrapper());
         }
 
         [Fact]
-        public void Should_return_favicon_ico()
+        public void It_should_return_favicon_ico()
         {
             var response = _Browser.Get("/favicon.ico");
             Assert.NotNull(response);
@@ -22,7 +22,7 @@ namespace Apphbify.Tests.ResourcesTests
         }
 
         [Fact]
-        public void Should_return_robots_txt()
+        public void It_should_return_robots_txt()
         {
             var response = _Browser.Get("/robots.txt");
             Assert.NotNull(response);
@@ -30,7 +30,7 @@ namespace Apphbify.Tests.ResourcesTests
         }
 
         [Fact]
-        public void Should_return_humans_txt()
+        public void It_should_return_humans_txt()
         {
             var response = _Browser.Get("/humans.txt");
             Assert.NotNull(response);
@@ -38,7 +38,7 @@ namespace Apphbify.Tests.ResourcesTests
         }
 
         [Fact]
-        public void Should_return_404_on_unknown_file()
+        public void It_should_return_404_on_unknown_file()
         {
             var response = _Browser.Get("/blah.txt");
             Assert.NotNull(response);
