@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using Apphbify.Data;
 using Apphbify.Resources;
 using Apphbify.Services;
 using Nancy;

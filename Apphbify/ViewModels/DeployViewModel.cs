@@ -1,4 +1,5 @@
-﻿using Nancy.Session;
+﻿using Apphbify.Data;
+using Nancy.Session;
 
 namespace Apphbify.ViewModels
 {

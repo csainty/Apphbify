@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AppHarbor;
 using AppHarbor.Model;
+using Apphbify.Data;
 using Apphbify.Services;
 using Apphbify.ViewModels;
 using Nancy;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace Apphbify
+namespace Apphbify.Data
 {
     public class DataStore
     {
