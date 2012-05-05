@@ -7,11 +7,17 @@ namespace Apphbify.Tests
 {
     public class TestingBootstrapper : DefaultNancyBootstrapper
     {
+        private readonly Mock<IApiService> _Api;
+        private readonly Mock<IDeploymentService> _Deploy;
         private readonly Mock<IOAuth> _OAuth;
+        private readonly Mock<IMailService> _Mail;
 
-        public TestingBootstrapper(Mock<IOAuth> oauth = null)
+        public TestingBootstrapper(Mock<IApiService> api = null, Mock<IDeploymentService> deploy = null, Mock<IOAuth> oauth = null, Mock<IMailService> mail = null)
         {
+            _Api = api ?? DefaultIApi();
+            _Deploy = deploy ?? DefaultIDeploy();
             _OAuth = oauth ?? DefaultIOAuth();
+            _Mail = mail ?? DefaultIMail();
         }
 
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
@@ -21,9 +27,25 @@ namespace Apphbify.Tests
 
         private Mock<IOAuth> DefaultIOAuth()
         {
-            var mock = new Mock<IOAuth>();
-            mock.Setup(d => d.GetAuthUrl()).Returns("http://auth.com");
-            mock.Setup(d => d.GetAccessToken(It.IsAny<string>())).Returns("12345");
+            var mock = new Mock<IOAuth>(MockBehavior.Strict);
+            return mock;
+        }
+
+        private Mock<IApiService> DefaultIApi()
+        {
+            var mock = new Mock<IApiService>(MockBehavior.Strict);
+            return mock;
+        }
+
+        private Mock<IDeploymentService> DefaultIDeploy()
+        {
+            var mock = new Mock<IDeploymentService>(MockBehavior.Strict);
+            return mock;
+        }
+
+        private Mock<IMailService> DefaultIMail()
+        {
+            var mock = new Mock<IMailService>(MockBehavior.Strict);
             return mock;
         }
     }

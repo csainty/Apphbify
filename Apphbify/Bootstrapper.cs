@@ -37,6 +37,8 @@ namespace Apphbify
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
         {
             // Singleton over the request, but only created when needed
+            container.Register<IDeploymentService, DeploymentService>().AsSingleton();
+            container.Register<IApiService, ApiService>().AsSingleton();
             container.Register<IOAuth>((_, __) =>
             {
                 return new OAuth(ConfigurationManager.AppSettings["OAUTH_ID"], ConfigurationManager.AppSettings["OAUTH_REDIRECT"], ConfigurationManager.AppSettings["OAUTH_KEY"]);

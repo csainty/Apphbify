@@ -13,10 +13,12 @@ namespace Apphbify
     {
         private AppHarborApi _Api;
         private DataStore _Data;
+        private IDeploymentService _Deploy;
 
-        public SecuredPagesModule(DataStore data)
+        public SecuredPagesModule(DataStore data, IDeploymentService deploy)
         {
             _Data = data;
+            _Deploy = deploy;
             Before.AddItemToEndOfPipeline(CheckAuth);
 
             Get["/Sites"] = Sites;
@@ -72,7 +74,7 @@ namespace Apphbify
                     variables.Add(variable.Key, value);
             }
 
-            var result = DeploymentService.Deploy(_Api, access_token, appName, app, variables, out slug);
+            var result = _Deploy.Deploy(_Api, access_token, appName, app, variables, out slug);
 
             // TODO: Log errors here, we want to know whether the API or the app config is at fault.
             switch (result)

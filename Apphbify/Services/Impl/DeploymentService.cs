@@ -5,9 +5,16 @@ using Apphbify.Data;
 
 namespace Apphbify.Services
 {
-    public static class DeploymentService
+    public class DeploymentService : IDeploymentService
     {
-        public static DeploymentResult Deploy(AppHarborApi api, string access_token, string siteName, App application, Dictionary<string, string> variables, out string slug)
+        private readonly IApiService _Api;
+
+        public DeploymentService(IApiService api)
+        {
+            _Api = api;
+        }
+
+        public DeploymentResult Deploy(AppHarborApi api, string access_token, string siteName, App application, Dictionary<string, string> variables, out string slug)
         {
             bool variablesOk = true;
             bool addonsOk = true;
@@ -19,11 +26,11 @@ namespace Apphbify.Services
             slug = createResult.ID;
 
             // Attempt to disable precompilation. Not fatal if it fails.
-            ApiService.DisablePreCompilation(access_token, slug);
+            _Api.DisablePreCompilation(access_token, slug);
 
             // Configure file system access
             if (application.EnableFileSystem)
-                ApiService.EnableFileSystem(access_token, slug);
+                _Api.EnableFileSystem(access_token, slug);
 
             // Set configuration variables
             foreach (var variable in variables)
@@ -33,14 +40,14 @@ namespace Apphbify.Services
             }
 
             // Deploy the first code bundle
-            if (!ApiService.DeployBuild(access_token, slug, application.DownloadUrl)) return DeploymentResult.UnableToDeployCode;
+            if (!_Api.DeployBuild(access_token, slug, application.DownloadUrl)) return DeploymentResult.UnableToDeployCode;
 
             // Install addons
             foreach (var addon in application.Addons)
             {
                 if (Addons.Supported.ContainsKey(addon))
                 {
-                    if (!ApiService.EnableAddon(access_token, slug, addon, Addons.Supported[addon]))
+                    if (!_Api.EnableAddon(access_token, slug, addon, Addons.Supported[addon]))
                         addonsOk = false;
                 }
                 else

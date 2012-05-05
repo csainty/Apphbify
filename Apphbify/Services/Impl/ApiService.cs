@@ -4,9 +4,9 @@ using RestSharp;
 
 namespace Apphbify.Services
 {
-    public static class ApiService
+    public class ApiService : IApiService
     {
-        public static bool DeployBuild(string access_token, string application_slug, string download_url)
+        public bool DeployBuild(string access_token, string application_slug, string download_url)
         {
             var client = new RestClient("https://appharbor.com/");
             var request = new RestRequest("applications/{slug}/builds", Method.POST) { RequestFormat = DataFormat.Json }
@@ -28,7 +28,7 @@ namespace Apphbify.Services
             return response.StatusCode == HttpStatusCode.Created;
         }
 
-        public static bool DisablePreCompilation(string access_token, string application_slug)
+        public bool DisablePreCompilation(string access_token, string application_slug)
         {
             var client = new RestClient("https://appharbor.com/");
             var request = new RestRequest("applications/{slug}/precompilation", Method.DELETE)
@@ -38,7 +38,7 @@ namespace Apphbify.Services
             return response.StatusCode == HttpStatusCode.NotFound;
         }
 
-        public static bool EnableFileSystem(string access_token, string application_slug)
+        public bool EnableFileSystem(string access_token, string application_slug)
         {
             var client = new RestClient("https://appharbor.com/");
             var request = new RestRequest("applications/{slug}", Method.PUT)
@@ -49,7 +49,7 @@ namespace Apphbify.Services
             return response.StatusCode == HttpStatusCode.OK;
         }
 
-        public static bool EnableAddon(string access_token, string application_slug, string addon_id, string plan_id)
+        public bool EnableAddon(string access_token, string application_slug, string addon_id, string plan_id)
         {
             var client = new RestClient("https://appharbor.com/");
             var request = new RestRequest("applications/{slug}/addons?addonId={addonId}&planId={planId}&termsAcknowledged=True", Method.POST)
