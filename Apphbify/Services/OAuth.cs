@@ -4,7 +4,7 @@ using RestSharp;
 
 namespace Apphbify.Services
 {
-    public class OAuth
+    public class OAuth : IOAuth
     {
         private string _OAuthId = "";
         private string _OAuthRedirect = "";
@@ -40,5 +40,12 @@ namespace Apphbify.Services
                 return "";
             }
         }
+    }
+
+    public interface IOAuth
+    {
+        string GetAuthUrl();
+
+        string GetAccessToken(string code);
     }
 }

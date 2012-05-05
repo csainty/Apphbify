@@ -8,7 +8,7 @@ namespace Apphbify.Tests
     {
         protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
         {
-            container.Register<OAuth>(new OAuth("", "", ""));
+            container.Register<IOAuth>(new OAuth("", "", ""));
         }
     }
 }
