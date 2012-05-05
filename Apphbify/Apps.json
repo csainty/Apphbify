@@ -32,7 +32,7 @@
     name: 'JabbR',
     description: 'JabbR is a chat application built with ASP.NET using SignalR.',
     project_url: 'https://github.com/davidfowl/JabbR',
-    download_url: 'https://github.com/csainty/JabbR/tarball/appharbor',
+    download_url: 'https://github.com/csainty/JabbR/tarball/AppHarbify',
     addons: ['sqlserver'],
     enableFileSystem: false,
     variables: {
