@@ -22,7 +22,12 @@ namespace Apphbify.Tests
         public TestingBootstrapper(Mock<IApiService> api = null, Mock<IDeploymentService> deploy = null, Mock<IOAuth> oauth = null, Mock<IMailService> mail = null, Dictionary<string, object> sessionData = null)
             : base(Config)
         {
-            FakeRootPathProvider.RootPath = "../../../Apphbify";    // Repoint the root path so we can find views
+            // Repoint the root path so we can find views
+#if DEBUG
+            FakeRootPathProvider.RootPath = "../../../Apphbify";
+#else
+            FakeRootPathProvider.RootPath = "_PublishedWebsites/Apphbify";
+#endif
             _Api = api ?? new Mock<IApiService>(MockBehavior.Strict);
             _Deploy = deploy ?? new Mock<IDeploymentService>(MockBehavior.Strict);
             _OAuth = oauth ?? new Mock<IOAuth>(MockBehavior.Strict);
