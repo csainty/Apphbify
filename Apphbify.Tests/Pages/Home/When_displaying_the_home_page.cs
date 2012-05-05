@@ -2,7 +2,7 @@
 using Nancy.Testing;
 using Xunit;
 
-namespace Apphbify.Tests.Pages
+namespace Apphbify.Tests.Pages.Home
 {
     public class When_displaying_the_home_page
     {
