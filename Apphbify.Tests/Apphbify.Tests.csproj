@@ -60,6 +60,9 @@
     <Compile Include="DataStoreTests\GetAllApps.cs" />
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResourcesTests\StaticFileRoutes.cs" />
+    <Compile Include="ResourcesTests\StaticResources.cs" />
+    <Compile Include="TestingBootstrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
