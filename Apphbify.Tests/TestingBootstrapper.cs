@@ -6,6 +6,7 @@ using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Testing;
 using Nancy.Testing.Fakes;
+using Nancy.ViewEngines.Razor;
 using TinyIoC;
 
 namespace Apphbify.Tests
@@ -19,6 +20,7 @@ namespace Apphbify.Tests
         private readonly Dictionary<string, object> _SessionData;
 
         public TestingBootstrapper(Mock<IApiService> api = null, Mock<IDeploymentService> deploy = null, Mock<IOAuth> oauth = null, Mock<IMailService> mail = null, Dictionary<string, object> sessionData = null)
+            : base(Config)
         {
             FakeRootPathProvider.RootPath = "../../../Apphbify";    // Repoint the root path so we can find views
             _Api = api ?? new Mock<IApiService>(MockBehavior.Strict);
@@ -26,6 +28,13 @@ namespace Apphbify.Tests
             _OAuth = oauth ?? new Mock<IOAuth>(MockBehavior.Strict);
             _Mail = mail ?? new Mock<IMailService>(MockBehavior.Strict);
             _SessionData = sessionData;
+            SecuredPagesModule.ApiFactory = _ => _Api.Object;
+            SecuredPagesModule.DeployFactory = _ => _Deploy.Object;
+        }
+
+        private static void Config(ConfigurableBoostrapperConfigurator cfg)
+        {
+            cfg.ViewEngine(new RazorViewEngine(new TestingRazorConfiguration()));
         }
 
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)

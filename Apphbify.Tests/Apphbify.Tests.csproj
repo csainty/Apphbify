@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AppHarbor.NET, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AppHarbor.NET.1.1.0\lib\net35\AppHarbor.NET.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\Nancy.Testing.0.10.0\lib\net40\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -50,6 +53,9 @@
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.10.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=102.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.103.0.0\lib\net35\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -69,6 +75,7 @@
   <ItemGroup>
     <Compile Include="DataStoreTests\GetAllApps.cs" />
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
+    <Compile Include="Helpers\TestingRazorConfiguration.cs" />
     <Compile Include="Helpers\TestingSession.cs" />
     <Compile Include="Pages\About\When_displaying_the_about_page.cs" />
     <Compile Include="Pages\Apps\When_displaying_the_apps_page.cs" />
@@ -77,6 +84,8 @@
     <Compile Include="Pages\Master\When_an_error_message_is_present.cs" />
     <Compile Include="Pages\Master\When_a_success_message_is_present.cs" />
     <Compile Include="Pages\Master\When_user_is_logged_on.cs" />
+    <Compile Include="Pages\Sites\When_an_anonymous_user_calls_sites.cs" />
+    <Compile Include="Pages\Sites\When_displaying_the_sites_page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourcesTests\When_requesting_static_content.cs" />
     <Compile Include="ResourcesTests\When_loading_static_content.cs" />

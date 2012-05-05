@@ -1,13 +1,24 @@
-﻿namespace Apphbify.Services
+﻿using System.Collections.Generic;
+using AppHarbor.Model;
+
+namespace Apphbify.Services
 {
     public interface IApiService
     {
-        bool DeployBuild(string access_token, string application_slug, string download_url);
+        bool DeployBuild(string application_slug, string download_url);
 
-        bool DisablePreCompilation(string access_token, string application_slug);
+        bool DisablePreCompilation(string application_slug);
 
-        bool EnableAddon(string access_token, string application_slug, string addon_id, string plan_id);
+        bool EnableAddon(string application_slug, string addon_id, string plan_id);
 
-        bool EnableFileSystem(string access_token, string application_slug);
+        bool EnableFileSystem(string application_slug);
+
+        IList<Application> GetApplications();
+
+        CreateResult<long> CreateServicehook(string slug, string url);
+
+        CreateResult<string> CreateApplication(string appName);
+
+        CreateResult<long> CreateConfigurationVariable(string slug, string key, string value);
     }
 }
