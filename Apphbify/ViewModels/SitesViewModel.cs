@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AppHarbor;
 using AppHarbor.Model;
 using Nancy.Session;
@@ -12,7 +13,7 @@ namespace Apphbify.ViewModels
         public SitesViewModel(AppHarborApi api, ISession session)
             : base("Sites", session)
         {
-            Sites = api.GetApplications();
+            Sites = api.GetApplications().OrderBy(d => d.Name.ToLowerInvariant()).ToList();
         }
     }
 }
