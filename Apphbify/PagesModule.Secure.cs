@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using AppHarbor;
 using AppHarbor.Model;
+using Apphbify.Data;
 using Apphbify.Services;
 using Apphbify.ViewModels;
 using Nancy;
@@ -10,8 +10,9 @@ namespace Apphbify
 {
     public class SecuredPagesModule : NancyModule
     {
-        private AppHarborApi _Api;
         private DataStore _Data;
+        private IApiService _Api;
+        private IDeploymentService _Deploy;
 
         public SecuredPagesModule(DataStore data)
         {
@@ -59,7 +60,6 @@ namespace Apphbify
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
             if (String.IsNullOrWhiteSpace(appName)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
 
-            string access_token = (string)Session[SessionKeys.ACCESS_TOKEN];
             string slug = "";
 
             // Build set of variables that need to be added to the application
@@ -71,7 +71,7 @@ namespace Apphbify
                     variables.Add(variable.Key, value);
             }
 
-            var result = DeploymentService.Deploy(_Api, access_token, appName, app, variables, out slug);
+            var result = _Deploy.Deploy(appName, app, variables, out slug);
 
             // TODO: Log errors here, we want to know whether the API or the app config is at fault.
             switch (result)
@@ -96,8 +96,12 @@ namespace Apphbify
             var token = ctx.Request.Session[SessionKeys.ACCESS_TOKEN] as string;
             if (String.IsNullOrEmpty(token))
                 return Response.AsRedirect("/SignIn?redirect=" + Uri.EscapeDataString(ctx.Request.Path));
-            _Api = new AppHarborApi(new AuthInfo { AccessToken = token, TokenType = "Bearer" });
+            _Api = ApiFactory(token);
+            _Deploy = DeployFactory(_Api);
             return null;
         }
+
+        public static Func<string, IApiService> ApiFactory = token => new ApiService(token);
+        public static Func<IApiService, IDeploymentService> DeployFactory = api => new DeploymentService(api);
     }
 }

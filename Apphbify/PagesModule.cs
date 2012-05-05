@@ -1,4 +1,5 @@
-﻿using Apphbify.ViewModels;
+﻿using Apphbify.Data;
+using Apphbify.ViewModels;
 using Nancy;
 
 namespace Apphbify

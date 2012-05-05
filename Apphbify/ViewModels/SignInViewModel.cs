@@ -7,7 +7,7 @@ namespace Apphbify.ViewModels
     {
         public string OAuthUrl { get; set; }
 
-        public SignInViewModel(OAuth oAuth, ISession session)
+        public SignInViewModel(IOAuth oAuth, ISession session)
             : base("SignIn", session)
         {
             OAuthUrl = oAuth.GetAuthUrl();

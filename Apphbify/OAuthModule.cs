@@ -7,9 +7,9 @@ namespace Apphbify
 {
     public class OAuthModule : NancyModule
     {
-        private readonly OAuth _OAuth;
+        private readonly IOAuth _OAuth;
 
-        public OAuthModule(OAuth api)
+        public OAuthModule(IOAuth api)
         {
             _OAuth = api;
             Get["/SignIn"] = SignIn;

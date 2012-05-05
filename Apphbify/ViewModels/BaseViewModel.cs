@@ -26,7 +26,7 @@ namespace Apphbify.ViewModels
             IsLoggedOn = session[SessionKeys.ACCESS_TOKEN] != null;
             ErrorFlash = session[SessionKeys.FLASH_ERROR] as string;
             SuccessFlash = session[SessionKeys.FLASH_SUCCESS] as string;
-            GoogleAnalyticsKey = ConfigurationManager.AppSettings["GA_KEY"];
+            GoogleAnalyticsKey = ConfigurationManager.AppSettings["GA_KEY"];    // TODO: Abstract settings and build a test for this value
             session.Delete(SessionKeys.FLASH_ERROR);
             session.Delete(SessionKeys.FLASH_SUCCESS);
         }

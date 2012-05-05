@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace Apphbify
+namespace Apphbify.Data
 {
     public class DataStore
     {
@@ -30,7 +31,7 @@ namespace Apphbify
 
         public App GetAppByKey(string key)
         {
-            return _Apps.Where(d => d.Key.Equals(key, System.StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+            return _Apps.Where(d => d.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
     }
 
