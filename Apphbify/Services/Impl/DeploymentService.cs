@@ -71,6 +71,7 @@ namespace Apphbify.Services
         UnableToCreateApplication,
         UnableToDeployCode,
         ErrorInstallingAddons,
-        ErrorSettingVariables
+        ErrorSettingVariables,
+        Unspecified
     }
 }

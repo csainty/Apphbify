@@ -11,5 +11,11 @@ namespace Apphbify.Tests.Helpers
             Assert.True(response.Context.Request.Session.HasChanged);
             Assert.False(String.IsNullOrEmpty(response.Context.Request.Session[SessionKeys.FLASH_ERROR] as string));
         }
+
+        public static void ShouldHaveSuccessMessage(this BrowserResponse response)
+        {
+            Assert.True(response.Context.Request.Session.HasChanged);
+            Assert.False(String.IsNullOrEmpty(response.Context.Request.Session[SessionKeys.FLASH_SUCCESS] as string));
+        }
     }
 }

@@ -56,19 +56,18 @@ namespace Apphbify
         private Response DoDeploy(dynamic parameters)
         {
             var app = _Data.GetAppByKey((string)parameters.key);
-            string appName = Request.Form.application_name;
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
-            if (String.IsNullOrWhiteSpace(appName)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
+            if (!Request.Form.application_name.HasValue) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
 
+            string appName = Request.Form.application_name;
             string slug = "";
 
             // Build set of variables that need to be added to the application
             var variables = new Dictionary<string, string>();
             foreach (var variable in app.Variables)
             {
-                string value = Request.Form[variable.Key];
-                if (!String.IsNullOrEmpty(value))
-                    variables.Add(variable.Key, value);
+                if (Request.Form[variable.Key].HasValue)
+                    variables.Add(variable.Key, Request.Form[variable.Key]);
             }
 
             var result = _Deploy.Deploy(appName, app, variables, out slug);

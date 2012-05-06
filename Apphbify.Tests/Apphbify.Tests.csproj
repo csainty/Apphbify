@@ -83,8 +83,17 @@
     <Compile Include="Pages\About\When_displaying_the_about_page.cs" />
     <Compile Include="Pages\AddEmailNotification\When_creating_the_hook_fails.cs" />
     <Compile Include="Pages\Apps\When_displaying_the_apps_page.cs" />
+    <Compile Include="Pages\Deploy\When_addons_fail_to_install.cs" />
+    <Compile Include="Pages\Deploy\When_application_creation_fails.cs" />
+    <Compile Include="Pages\Deploy\When_code_deploy_fails.cs" />
+    <Compile Include="Pages\Deploy\When_config_variables_are_entered.cs" />
+    <Compile Include="Pages\Deploy\When_deploying_an_app_that_doesnt_exist.cs" />
+    <Compile Include="Pages\Deploy\When_deployment_fails_for_an_unknown_reason.cs" />
+    <Compile Include="Pages\Deploy\When_deployment_succeeds.cs" />
     <Compile Include="Pages\Deploy\When_displaying_the_deploy_page.cs" />
+    <Compile Include="Pages\Deploy\When_no_application_name_is_specified.cs" />
     <Compile Include="Pages\Deploy\When_requesting_an_app_that_doesnt_exist.cs" />
+    <Compile Include="Pages\Deploy\When_variables_fail_to_set.cs" />
     <Compile Include="Pages\Home\When_displaying_the_home_page.cs" />
     <Compile Include="Pages\Master\When_no_user_is_logged_on.cs" />
     <Compile Include="Pages\Master\When_an_error_message_is_present.cs" />

@@ -58,6 +58,11 @@ namespace Apphbify.Tests
             _Api = api;
         }
 
+        public void Deployment(Mock<IDeploymentService> deploy)
+        {
+            _Deploy = deploy;
+        }
+
         public void LoggedInUser()
         {
             Session(SessionKeys.ACCESS_TOKEN, "12345");
