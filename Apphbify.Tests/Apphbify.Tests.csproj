@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStoreTests\GetAddonByKey.cs" />
     <Compile Include="DataStoreTests\GetAllApps.cs" />
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
     <Compile Include="Helpers\BrowserResponseExtensions.cs" />

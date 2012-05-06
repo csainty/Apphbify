@@ -1,0 +1,23 @@
+﻿[
+  { 'key': 'airbreak', 'plan': 'free' },
+  { 'key': 'bitline', 'plan': 'AH_Developer' },
+  { 'key': 'blitz', 'plan': '250' },
+  { 'key': 'cloudamqp', 'plan': 'lemur' },
+  { 'key': 'cloudant', 'plan': 'basic' },
+  { 'key': 'cloudmailin', 'plan': 'developer' },
+  { 'key': 'ironmq', 'plan': 'rust' },
+  { 'key': 'justonedb', 'plan': 'lambda' },
+  { 'key': 'logentries', 'plan': 'Trial' },
+  { 'key': 'mailgun', 'plan': 'free' },
+  { 'key': 'memcacher', 'plan': 'pico' },
+  { 'key': 'mongolab', 'plan': 'starter' },
+  { 'key': 'mongohq', 'plan': 'sandbox' },
+  { 'key': 'mysql', 'plan': 'yocto' },
+  { 'key': 'newrelic', 'plan': 'standard' },
+  { 'key': 'ravenhq', 'plan': '6652C2B8-7F7B-455D-9C76-3B31213C0C51' },
+  { 'key': 'redistogo', 'plan': 'nano' },
+  { 'key': 'searchifyindextank', 'plan': 'starter' },
+  { 'key': 'sendgrid', 'plan': 'free' },
+  { 'key': 'sqlserver', 'plan': 'yocto' },
+  { 'key': 'stillalive', 'plan': 'basic' }
+]

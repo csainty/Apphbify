@@ -10,18 +10,26 @@ namespace Apphbify.Data
     public class DataStore
     {
         private static List<App> _Apps;
+        private static List<Addon> _Addons;
 
         public DataStore()
         {
+            _Apps = LoadData<List<App>>("Apphbify.Apps.json")
+                .OrderBy(d => d.Name.ToLowerInvariant())
+                .ToList();
+            _Addons = LoadData<List<Addon>>("Apphbify.Addons.json")
+                .ToList();
+        }
+
+        private T LoadData<T>(string name)
+        {
             string json;
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Apphbify.Apps.json"))
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name))
             using (var reader = new StreamReader(stream))
             {
                 json = reader.ReadToEnd();
             }
-            _Apps = JsonConvert.DeserializeObject<List<App>>(json)
-                .OrderBy(d => d.Name.ToLowerInvariant())
-                .ToList();
+            return JsonConvert.DeserializeObject<T>(json);
         }
 
         public IList<App> GetAllApps()
@@ -32,6 +40,11 @@ namespace Apphbify.Data
         public App GetAppByKey(string key)
         {
             return _Apps.Where(d => d.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
+        }
+
+        public Addon GetAddonByKey(string key)
+        {
+            return _Addons.Where(d => d.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
     }
 
@@ -60,5 +73,14 @@ namespace Apphbify.Data
 
         [JsonProperty("variables")]
         public Dictionary<string, string> Variables { get; set; }
+    }
+
+    public class Addon
+    {
+        [JsonProperty("key")]
+        public string Key { get; set; }
+
+        [JsonProperty("plan")]
+        public string Plan { get; set; }
     }
 }

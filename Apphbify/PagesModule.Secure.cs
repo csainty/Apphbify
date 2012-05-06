@@ -101,7 +101,10 @@ namespace Apphbify
             return null;
         }
 
+        // TODO: Refactor these, they are awful.
+        // Should be able to handle it inside ConfigureRequestContainer when it stops passing the NancyContext as null
         public static Func<string, IApiService> ApiFactory = token => new ApiService(token);
-        public static Func<IApiService, IDeploymentService> DeployFactory = api => new DeploymentService(api);
+
+        public static Func<IApiService, IDeploymentService> DeployFactory = api => new DeploymentService(api, new DataStore());
     }
 }
