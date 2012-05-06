@@ -63,6 +63,11 @@ namespace Apphbify.Tests
             _Deploy = deploy;
         }
 
+        public void Mail(Mock<IMailService> mail)
+        {
+            _Mail = mail;
+        }
+
         public void LoggedInUser()
         {
             Session(SessionKeys.ACCESS_TOKEN, "12345");

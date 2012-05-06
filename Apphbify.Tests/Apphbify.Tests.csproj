@@ -80,6 +80,9 @@
     <Compile Include="Helpers\TestingRazorConfiguration.cs" />
     <Compile Include="Helpers\TestingSession.cs" />
     <Compile Include="Helpers\TestingViewEngine.cs" />
+    <Compile Include="Hooks\NotifyByEmail\When_no_payload_is_sent.cs" />
+    <Compile Include="Hooks\NotifyByEmail\When_a_notification_is_sent.cs" />
+    <Compile Include="Hooks\NotifyByEmail\When_no_email_is_sent.cs" />
     <Compile Include="Pages\About\When_displaying_the_about_page.cs" />
     <Compile Include="Pages\AddEmailNotification\When_creating_the_hook_fails.cs" />
     <Compile Include="Pages\Apps\When_displaying_the_apps_page.cs" />
