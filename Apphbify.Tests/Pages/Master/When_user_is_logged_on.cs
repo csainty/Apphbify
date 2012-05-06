@@ -13,7 +13,7 @@ namespace Apphbify.Tests.Pages.Master
         {
             _Browser = Testing.CreateBrowser<PagesModule>(with =>
             {
-                with.Session(SessionKeys.ACCESS_TOKEN, "12345");
+                with.LoggedInUser();
             });
             _Response = _Browser.Get("/");
         }

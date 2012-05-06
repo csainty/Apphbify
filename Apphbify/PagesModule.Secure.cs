@@ -32,11 +32,11 @@ namespace Apphbify
 
         private Response EnableEmailNotification(dynamic parameters)
         {
-            string email = Request.Form["email"];
-            string slug = parameters.slug;
-            if (String.IsNullOrEmpty(email))
+            if (!Request.Form.email.HasValue)
                 return Response.AsJson(JsonResult.Error("Please provide an email address."), HttpStatusCode.BadRequest);
 
+            string email = Request.Form.email;
+            string slug = parameters.slug;
             var result = _Api.CreateServicehook(slug, String.Format("http://appharbify.com/Sites/{0}/NotifyByEmail?email={1}", slug, Uri.EscapeDataString(email)));
 
             if (result.Status != CreateStatus.Created)

@@ -58,6 +58,11 @@ namespace Apphbify.Tests
             _Api = api;
         }
 
+        public void LoggedInUser()
+        {
+            Session(SessionKeys.ACCESS_TOKEN, "12345");
+        }
+
         public void Dependencies(ConfigurableBootstrapper.ConfigurableBoostrapperConfigurator cfg)
         {
             _Api = _Api ?? new Mock<IApiService>(MockBehavior.Strict);
