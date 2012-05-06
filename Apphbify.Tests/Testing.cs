@@ -60,10 +60,10 @@ namespace Apphbify.Tests
 
         public void Dependencies(ConfigurableBootstrapper.ConfigurableBoostrapperConfigurator cfg)
         {
-            _Api = _Api ?? new Mock<IApiService>();
-            _Deploy = _Deploy ?? new Mock<IDeploymentService>();
-            _OAuth = _OAuth ?? new Mock<IOAuth>();
-            _Mail = _Mail ?? new Mock<IMailService>();
+            _Api = _Api ?? new Mock<IApiService>(MockBehavior.Strict);
+            _Deploy = _Deploy ?? new Mock<IDeploymentService>(MockBehavior.Strict);
+            _OAuth = _OAuth ?? new Mock<IOAuth>(MockBehavior.Strict);
+            _Mail = _Mail ?? new Mock<IMailService>(MockBehavior.Strict);
             cfg.Dependencies(_Api.Object, _Deploy.Object, _OAuth.Object, _Mail.Object);
             SecuredPagesModule.ApiFactory = _ => _Api.Object;
             SecuredPagesModule.DeployFactory = _ => _Deploy.Object;
