@@ -11,7 +11,10 @@ namespace Apphbify.Tests.Pages.Master
 
         public When_a_success_message_is_present()
         {
-            _Browser = new Browser(new TestingBootstrapper(sessionData: new Dictionary<string, object>() { { SessionKeys.FLASH_SUCCESS, "All done!" } }));
+            _Browser = Testing.CreateBrowser<PagesModule>(with =>
+            {
+                with.Session(SessionKeys.FLASH_SUCCESS, "All done!");
+            });
             _Response = _Browser.Get("/");
         }
 

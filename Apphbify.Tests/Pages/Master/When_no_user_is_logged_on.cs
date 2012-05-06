@@ -10,7 +10,7 @@ namespace Apphbify.Tests.Pages.Master
 
         public When_no_user_is_logged_on()
         {
-            _Browser = new Browser(new TestingBootstrapper());
+            _Browser = Testing.CreateBrowser<PagesModule>();
             _Response = _Browser.Get("/");
         }
 

@@ -10,7 +10,7 @@ namespace Apphbify.Tests.ResourcesTests
 
         public When_requesting_static_content()
         {
-            _Browser = new Browser(new TestingBootstrapper());
+            _Browser = Testing.CreateBrowser<PagesModule>();
         }
 
         [Fact]

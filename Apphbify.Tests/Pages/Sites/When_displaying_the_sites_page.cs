@@ -18,10 +18,11 @@ namespace Apphbify.Tests.Pages.Sites
             var api = new Mock<IApiService>();
             api.Setup(d => d.GetApplications()).Returns(new List<Application> { new Application { Slug = "test", Name = "My Test Site" } });
 
-            _Browser = new Browser(new TestingBootstrapper(
-                sessionData: new Dictionary<string, object> { { SessionKeys.ACCESS_TOKEN, "12345" } },
-                api: api
-            ));
+            _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
+            {
+                with.Session(SessionKeys.ACCESS_TOKEN, "12345");
+                with.Api(api);
+            });
             _Response = _Browser.Get("/Sites");
         }
 

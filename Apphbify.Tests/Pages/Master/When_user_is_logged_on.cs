@@ -11,7 +11,10 @@ namespace Apphbify.Tests.Pages.Master
 
         public When_user_is_logged_on()
         {
-            _Browser = new Browser(new TestingBootstrapper(sessionData: new Dictionary<string, object>() { { SessionKeys.ACCESS_TOKEN, "12345" } }));
+            _Browser = Testing.CreateBrowser<PagesModule>(with =>
+            {
+                with.Session(SessionKeys.ACCESS_TOKEN, "12345");
+            });
             _Response = _Browser.Get("/");
         }
 

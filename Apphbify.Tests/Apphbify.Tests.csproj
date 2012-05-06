@@ -77,6 +77,7 @@
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
     <Compile Include="Helpers\TestingRazorConfiguration.cs" />
     <Compile Include="Helpers\TestingSession.cs" />
+    <Compile Include="Helpers\TestingViewEngine.cs" />
     <Compile Include="Pages\About\When_displaying_the_about_page.cs" />
     <Compile Include="Pages\Apps\When_displaying_the_apps_page.cs" />
     <Compile Include="Pages\Home\When_displaying_the_home_page.cs" />
@@ -89,7 +90,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResourcesTests\When_requesting_static_content.cs" />
     <Compile Include="ResourcesTests\When_loading_static_content.cs" />
-    <Compile Include="TestingBootstrapper.cs" />
+    <Compile Include="Testing.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

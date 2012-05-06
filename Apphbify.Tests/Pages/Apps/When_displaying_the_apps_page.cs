@@ -11,7 +11,7 @@ namespace Apphbify.Tests.Pages.Apps
 
         public When_displaying_the_apps_page()
         {
-            _Browser = new Browser(new TestingBootstrapper());
+            _Browser = Testing.CreateBrowser<PagesModule>();
             _Response = _Browser.Get("/Apps");
         }
 
