@@ -15,13 +15,14 @@ namespace Apphbify.Tests.Pages.Sites
 
         public When_displaying_the_sites_page()
         {
-            var api = new Mock<IApiService>();
+            var api = new Mock<IApiService>(MockBehavior.Strict);
             api.Setup(d => d.GetApplications()).Returns(new List<Application> { new Application { Slug = "test", Name = "My Test Site" } });
 
-            _Browser = new Browser(new TestingBootstrapper(
-                sessionData: new Dictionary<string, object> { { SessionKeys.ACCESS_TOKEN, "12345" } },
-                api: api
-            ));
+            _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
+            {
+                with.LoggedInUser();
+                with.Api(api);
+            });
             _Response = _Browser.Get("/Sites");
         }
 

@@ -11,7 +11,7 @@ namespace Apphbify.Tests.Pages.Sites
 
         public When_an_anonymous_user_calls_sites()
         {
-            _Browser = new Browser(new TestingBootstrapper());
+            _Browser = Testing.CreateBrowser<SecuredPagesModule>();
             _Response = _Browser.Get("/Sites");
         }
 

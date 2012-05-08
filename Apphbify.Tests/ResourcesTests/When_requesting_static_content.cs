@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using System;
+using Nancy;
 using Nancy.Testing;
 using Xunit;
 
@@ -10,7 +11,7 @@ namespace Apphbify.Tests.ResourcesTests
 
         public When_requesting_static_content()
         {
-            _Browser = new Browser(new TestingBootstrapper());
+            _Browser = Testing.CreateBrowser<PagesModule>();
         }
 
         [Fact]
@@ -19,6 +20,7 @@ namespace Apphbify.Tests.ResourcesTests
             var response = _Browser.Get("/favicon.ico");
             Assert.NotNull(response);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.False(String.IsNullOrEmpty(response.Body.AsString()));
         }
 
         [Fact]
@@ -27,6 +29,7 @@ namespace Apphbify.Tests.ResourcesTests
             var response = _Browser.Get("/robots.txt");
             Assert.NotNull(response);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.False(String.IsNullOrEmpty(response.Body.AsString()));
         }
 
         [Fact]
@@ -35,6 +38,7 @@ namespace Apphbify.Tests.ResourcesTests
             var response = _Browser.Get("/humans.txt");
             Assert.NotNull(response);
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.False(String.IsNullOrEmpty(response.Body.AsString()));
         }
 
         [Fact]

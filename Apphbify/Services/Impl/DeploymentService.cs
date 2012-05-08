@@ -7,10 +7,12 @@ namespace Apphbify.Services
     public class DeploymentService : IDeploymentService
     {
         private readonly IApiService _Api;
+        private readonly DataStore _Data;
 
-        public DeploymentService(IApiService api)
+        public DeploymentService(IApiService api, DataStore data)
         {
             _Api = api;
+            _Data = data;
         }
 
         public DeploymentResult Deploy(string siteName, App application, Dictionary<string, string> variables, out string slug)
@@ -44,15 +46,15 @@ namespace Apphbify.Services
             // Install addons
             foreach (var addon in application.Addons)
             {
-                if (Addons.Supported.ContainsKey(addon))
-                {
-                    if (!_Api.EnableAddon(slug, addon, Addons.Supported[addon]))
-                        addonsOk = false;
-                }
-                else
+                var a = _Data.GetAddonByKey(addon);
+                if (a == null)
                 {
                     addonsOk = false;
+                    continue;
                 }
+
+                if (!_Api.EnableAddon(slug, a.Key, a.Plan))
+                    addonsOk = false;
             }
 
             // Check for non-critical failures
@@ -69,6 +71,7 @@ namespace Apphbify.Services
         UnableToCreateApplication,
         UnableToDeployCode,
         ErrorInstallingAddons,
-        ErrorSettingVariables
+        ErrorSettingVariables,
+        Unspecified
     }
 }

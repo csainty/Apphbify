@@ -79,6 +79,7 @@
     <Content Include="Content\css\apphbify.min.css">
       <DependentUpon>apphbify.chirp.config</DependentUpon>
     </Content>
+    <EmbeddedResource Include="Addons.json" />
     <None Include="Content\css\bootstrap-responsive.css" />
     <None Include="Content\css\bootstrap.css" />
     <None Include="Content\css\master.css" />
@@ -188,7 +189,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Data\Addons.cs" />
     <Compile Include="HookModule.cs" />
     <Compile Include="Models\ServiceHookModel.cs" />
     <Compile Include="OAuthModule.cs" />

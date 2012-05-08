@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using Nancy;
 using Nancy.Bootstrapper;
@@ -48,10 +49,7 @@ namespace Apphbify.Resources
         {
             pipelines.BeforeRequest.AddItemToStartOfPipeline(ctx =>
             {
-                if (ctx.Request == null || string.IsNullOrEmpty(ctx.Request.Path))
-                    return null;
-
-                if (ctx.Request.Path.Equals(name, System.StringComparison.InvariantCultureIgnoreCase))
+                if (ctx.Request != null && String.Equals(ctx.Request.Path, name, System.StringComparison.InvariantCultureIgnoreCase))
                 {
                     var response = new Response
                     {

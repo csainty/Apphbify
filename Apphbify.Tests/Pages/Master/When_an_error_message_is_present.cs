@@ -11,7 +11,10 @@ namespace Apphbify.Tests.Pages.Master
 
         public When_an_error_message_is_present()
         {
-            _Browser = new Browser(new TestingBootstrapper(sessionData: new Dictionary<string, object>() { { SessionKeys.FLASH_ERROR, "There was an error!" } }));
+            _Browser = Testing.CreateBrowser<PagesModule>(with =>
+            {
+                with.Session(SessionKeys.FLASH_ERROR, "There was an error!");
+            });
             _Response = _Browser.Get("/");
         }
 

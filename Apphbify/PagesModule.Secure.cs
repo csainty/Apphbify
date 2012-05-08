@@ -32,11 +32,11 @@ namespace Apphbify
 
         private Response EnableEmailNotification(dynamic parameters)
         {
-            string email = Request.Form["email"];
-            string slug = parameters.slug;
-            if (String.IsNullOrEmpty(email))
+            if (!Request.Form.email.HasValue)
                 return Response.AsJson(JsonResult.Error("Please provide an email address."), HttpStatusCode.BadRequest);
 
+            string email = Request.Form.email;
+            string slug = parameters.slug;
             var result = _Api.CreateServicehook(slug, String.Format("http://appharbify.com/Sites/{0}/NotifyByEmail?email={1}", slug, Uri.EscapeDataString(email)));
 
             if (result.Status != CreateStatus.Created)
@@ -56,19 +56,18 @@ namespace Apphbify
         private Response DoDeploy(dynamic parameters)
         {
             var app = _Data.GetAppByKey((string)parameters.key);
-            string appName = Request.Form.application_name;
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
-            if (String.IsNullOrWhiteSpace(appName)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
+            if (!Request.Form.application_name.HasValue) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
 
+            string appName = Request.Form.application_name;
             string slug = "";
 
             // Build set of variables that need to be added to the application
             var variables = new Dictionary<string, string>();
             foreach (var variable in app.Variables)
             {
-                string value = Request.Form[variable.Key];
-                if (!String.IsNullOrEmpty(value))
-                    variables.Add(variable.Key, value);
+                if (Request.Form[variable.Key].HasValue)
+                    variables.Add(variable.Key, Request.Form[variable.Key]);
             }
 
             var result = _Deploy.Deploy(appName, app, variables, out slug);
@@ -101,7 +100,10 @@ namespace Apphbify
             return null;
         }
 
+        // TODO: Refactor these, they are awful.
+        // Should be able to handle it inside ConfigureRequestContainer when it stops passing the NancyContext as null
         public static Func<string, IApiService> ApiFactory = token => new ApiService(token);
-        public static Func<IApiService, IDeploymentService> DeployFactory = api => new DeploymentService(api);
+
+        public static Func<IApiService, IDeploymentService> DeployFactory = api => new DeploymentService(api, new DataStore());
     }
 }
