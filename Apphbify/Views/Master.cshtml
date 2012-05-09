@@ -7,6 +7,10 @@
     <title>AppHarbify</title>
     <meta name="description" content="Instantly deploy open source software to AppHarbor">
     <meta name="viewport" content="width=device-width">
+    @if (!String.IsNullOrEmpty(Model.WebSiteSparkId))
+    {
+        <meta name="WebsiteSpark" content="@Model.WebSiteSparkId" />
+    }
     <link href="/Content/css/apphbify.min.css" rel="stylesheet" type="text/css" />
     <link href="/humans.txt" rel="author" type="text/plain" />
     @RenderSection("Head", false)

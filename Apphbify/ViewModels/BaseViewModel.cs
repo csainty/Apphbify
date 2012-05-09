@@ -20,6 +20,8 @@ namespace Apphbify.ViewModels
 
         public string GoogleAnalyticsKey { get; set; }
 
+        public string WebSiteSparkId { get; set; }
+
         public BaseViewModel(string pageName, ISession session)
         {
             CurrentPage = pageName;
@@ -27,6 +29,7 @@ namespace Apphbify.ViewModels
             ErrorFlash = session[SessionKeys.FLASH_ERROR] as string;
             SuccessFlash = session[SessionKeys.FLASH_SUCCESS] as string;
             GoogleAnalyticsKey = ConfigurationManager.AppSettings["GA_KEY"];    // TODO: Abstract settings and build a test for this value
+            WebSiteSparkId = ConfigurationManager.AppSettings["WSS"];    // TODO: Abstract settings and build a test for this value
             session.Delete(SessionKeys.FLASH_ERROR);
             session.Delete(SessionKeys.FLASH_SUCCESS);
         }
