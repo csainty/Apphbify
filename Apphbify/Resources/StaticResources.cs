@@ -8,13 +8,11 @@ namespace Apphbify.Resources
 {
     public static class StaticResources
     {
-        public static byte[] FavIcon;
         public static byte[] Robots;
         public static byte[] Humans;
 
         static StaticResources()
         {
-            FavIcon = ReadFile("favicon.ico");
             Robots = ReadFile("robots.txt");
             Humans = ReadFile("humans.txt");
         }

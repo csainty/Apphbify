@@ -12,8 +12,6 @@ namespace Apphbify
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
-        protected override byte[] DefaultFavIcon { get { return StaticResources.FavIcon; } }
-
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             CookieBasedSessions.Enable(pipelines);
