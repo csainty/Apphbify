@@ -106,6 +106,7 @@
     <Compile Include="Pages\Master\When_an_error_message_is_present.cs" />
     <Compile Include="Pages\Master\When_a_success_message_is_present.cs" />
     <Compile Include="Pages\Master\When_user_is_logged_on.cs" />
+    <Compile Include="Pages\SignOut\When_user_signs_out.cs" />
     <Compile Include="Pages\Sites\When_an_anonymous_user_calls_sites.cs" />
     <Compile Include="Pages\Sites\When_displaying_the_sites_page.cs" />
     <Compile Include="Pages\AddEmailNotification\When_enabling_a_notification.cs" />
