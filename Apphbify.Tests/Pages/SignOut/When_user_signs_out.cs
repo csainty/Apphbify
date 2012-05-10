@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Apphbify.Tests.Helpers;
+﻿using Apphbify.Tests.Helpers;
 using Nancy.Testing;
 using Xunit;
 

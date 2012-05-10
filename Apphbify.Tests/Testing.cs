@@ -58,6 +58,11 @@ namespace Apphbify.Tests
             _Api = api;
         }
 
+        public void OAuth(Mock<IOAuth> oauth)
+        {
+            _OAuth = oauth;
+        }
+
         public void Deployment(Mock<IDeploymentService> deploy)
         {
             _Deploy = deploy;
