@@ -6,7 +6,6 @@ using Moq;
 using Nancy;
 using Nancy.Testing;
 using Nancy.Testing.Fakes;
-using Nancy.ViewEngines.Razor;
 
 namespace Apphbify.Tests
 {
@@ -20,6 +19,8 @@ namespace Apphbify.Tests
             FakeRootPathProvider.RootPath = "_PublishedWebsites/Apphbify";
 #endif
         }
+
+        public static void Init() { } // Empty function we can call to ensure the class ctor has run in tests that don't use the browser below
 
         public static Browser CreateBrowser<TModule>(Action<TestConfig> configBuilder = null) where TModule : NancyModule
         {
