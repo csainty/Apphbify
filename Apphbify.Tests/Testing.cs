@@ -85,8 +85,6 @@ namespace Apphbify.Tests
             _OAuth = _OAuth ?? new Mock<IOAuth>(MockBehavior.Strict);
             _Mail = _Mail ?? new Mock<IMailService>(MockBehavior.Strict);
             cfg.Dependencies(_Api.Object, _Deploy.Object, _OAuth.Object, _Mail.Object);
-            SecuredPagesModule.ApiFactory = _ => _Api.Object;
-            SecuredPagesModule.DeployFactory = _ => _Deploy.Object;
         }
 
         public void PrepareBootstrapper(ConfigurableBootstrapper bootstrapper)

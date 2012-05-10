@@ -14,9 +14,11 @@ namespace Apphbify
         private IApiService _Api;
         private IDeploymentService _Deploy;
 
-        public SecuredPagesModule(DataStore data)
+        public SecuredPagesModule(DataStore data, IApiService api, IDeploymentService deploy)
         {
             _Data = data;
+            _Api = api;
+            _Deploy = deploy;
             Before.AddItemToEndOfPipeline(CheckAuth);
 
             Get["/Sites"] = Sites;
@@ -95,15 +97,7 @@ namespace Apphbify
             var token = ctx.Request.Session[SessionKeys.ACCESS_TOKEN] as string;
             if (String.IsNullOrEmpty(token))
                 return Response.AsRedirect("/SignIn?redirect=" + Uri.EscapeDataString(ctx.Request.Path));
-            _Api = ApiFactory(token);
-            _Deploy = DeployFactory(_Api);
             return null;
         }
-
-        // TODO: Refactor these, they are awful.
-        // Should be able to handle it inside ConfigureRequestContainer when it stops passing the NancyContext as null
-        public static Func<string, IApiService> ApiFactory = token => new ApiService(token);
-
-        public static Func<IApiService, IDeploymentService> DeployFactory = api => new DeploymentService(api, new DataStore());
     }
 }
