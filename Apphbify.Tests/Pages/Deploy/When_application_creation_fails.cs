@@ -16,7 +16,7 @@ namespace Apphbify.Tests.Pages.Deploy
 
         public When_application_creation_fails()
         {
-            _Deploy = new Mock<IDeploymentService>();
+            _Deploy = new Mock<IDeploymentService>(MockBehavior.Strict);
             string slug;
             _Deploy.Setup(d => d.Deploy(It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug)).Returns(DeploymentResult.UnableToCreateApplication);
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>

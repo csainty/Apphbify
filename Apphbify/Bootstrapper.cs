@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using Apphbify.Data;
-using Apphbify.Resources;
 using Apphbify.Services;
 using Nancy;
 using Nancy.Bootstrapper;
@@ -39,6 +38,13 @@ namespace Apphbify
             {
                 return new OAuth(ConfigurationManager.AppSettings["OAUTH_ID"], ConfigurationManager.AppSettings["OAUTH_REDIRECT"], ConfigurationManager.AppSettings["OAUTH_KEY"]);
             });
+            container.Register<IApiService>((_, __) =>
+            {
+                if (context.Request == null || context.Request.Session == null || context.Request.Session[SessionKeys.ACCESS_TOKEN] == null)
+                    return null;
+                return new ApiService((string)context.Request.Session[SessionKeys.ACCESS_TOKEN]);
+            });
+            container.Register<IDeploymentService, DeploymentService>().AsSingleton();
         }
     }
 }

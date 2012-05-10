@@ -16,7 +16,7 @@ namespace Apphbify.Tests.Pages.AddEmailNotification
 
         public When_no_email_is_passed()
         {
-            _Api = new Mock<IApiService>();
+            _Api = new Mock<IApiService>(MockBehavior.Strict);
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
             {
                 with.LoggedInUser();

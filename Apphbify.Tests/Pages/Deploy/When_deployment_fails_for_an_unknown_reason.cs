@@ -16,7 +16,7 @@ namespace Apphbify.Tests.Pages.Deploy
 
         public When_deployment_fails_for_an_unknown_reason()
         {
-            _Deploy = new Mock<IDeploymentService>();
+            _Deploy = new Mock<IDeploymentService>(MockBehavior.Strict);
             string slug;
             _Deploy.Setup(d => d.Deploy(It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug)).Returns(DeploymentResult.Unspecified);
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>

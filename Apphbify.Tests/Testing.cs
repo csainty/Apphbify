@@ -6,7 +6,6 @@ using Moq;
 using Nancy;
 using Nancy.Testing;
 using Nancy.Testing.Fakes;
-using Nancy.ViewEngines.Razor;
 
 namespace Apphbify.Tests
 {
@@ -20,6 +19,8 @@ namespace Apphbify.Tests
             FakeRootPathProvider.RootPath = "_PublishedWebsites/Apphbify";
 #endif
         }
+
+        public static void Init() { } // Empty function we can call to ensure the class ctor has run in tests that don't use the browser below
 
         public static Browser CreateBrowser<TModule>(Action<TestConfig> configBuilder = null) where TModule : NancyModule
         {
@@ -58,6 +59,11 @@ namespace Apphbify.Tests
             _Api = api;
         }
 
+        public void OAuth(Mock<IOAuth> oauth)
+        {
+            _OAuth = oauth;
+        }
+
         public void Deployment(Mock<IDeploymentService> deploy)
         {
             _Deploy = deploy;
@@ -80,8 +86,6 @@ namespace Apphbify.Tests
             _OAuth = _OAuth ?? new Mock<IOAuth>(MockBehavior.Strict);
             _Mail = _Mail ?? new Mock<IMailService>(MockBehavior.Strict);
             cfg.Dependencies(_Api.Object, _Deploy.Object, _OAuth.Object, _Mail.Object);
-            SecuredPagesModule.ApiFactory = _ => _Api.Object;
-            SecuredPagesModule.DeployFactory = _ => _Deploy.Object;
         }
 
         public void PrepareBootstrapper(ConfigurableBootstrapper bootstrapper)

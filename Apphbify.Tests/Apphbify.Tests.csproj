@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper\When_requesting_the_home_page.cs" />
     <Compile Include="DataStoreTests\GetAddonByKey.cs" />
     <Compile Include="DataStoreTests\GetAllApps.cs" />
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
@@ -106,6 +107,13 @@
     <Compile Include="Pages\Master\When_an_error_message_is_present.cs" />
     <Compile Include="Pages\Master\When_a_success_message_is_present.cs" />
     <Compile Include="Pages\Master\When_user_is_logged_on.cs" />
+    <Compile Include="Pages\OAuthCallback\When_a_redirect_was_specified.cs" />
+    <Compile Include="Pages\OAuthCallback\When_code_can_not_be_exchanged_for_access_token.cs" />
+    <Compile Include="Pages\OAuthCallback\When_no_code_is_sent.cs" />
+    <Compile Include="Pages\OAuthCallback\When_oauth_callback_is_received.cs" />
+    <Compile Include="Pages\SignIn\When_a_redirect_url_is_specified.cs" />
+    <Compile Include="Pages\SignIn\When_requesting_the_sign_in_page.cs" />
+    <Compile Include="Pages\SignOut\When_user_signs_out.cs" />
     <Compile Include="Pages\Sites\When_an_anonymous_user_calls_sites.cs" />
     <Compile Include="Pages\Sites\When_displaying_the_sites_page.cs" />
     <Compile Include="Pages\AddEmailNotification\When_enabling_a_notification.cs" />
