@@ -26,7 +26,7 @@ Here is an example of what you need to add
 }  
 ```
 
-*For a list of supported addons see [Addons.cs](https://github.com/csainty/Apphbify/blob/master/Apphbify/Data/Addons.cs)*
+*For a list of supported addons see [Addons.json](https://github.com/csainty/Apphbify/blob/master/Apphbify/Addons.json)*
 
 ##Contact
 Grab me on twitter [@csainty](http://twitter.com/csainty), follow my [blog](http://blog.csainty.com) or track me down somewhere on [JabbR](http://jabbr.net).
