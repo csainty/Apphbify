@@ -19,7 +19,7 @@
     <header>
         <div class="navbar">
             <div class="navbar-inner">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="brand" href="/">AppHarbify!</a>
                     <ul class="nav">
                         <li class="@(Model.CurrentPage == "Home" ? "active" : "")">
@@ -50,7 +50,7 @@
             </div>
         </div>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         @if (Model.HasErrorFlash)
         {
             <div class="alert alert-error">
@@ -68,14 +68,14 @@
         @RenderBody()
     </div>
     <footer>
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row-fluid hidden-phone">
                 <div class="span12">
                     AppHarbify is open source. To contribute or add your own projects,
                     <a href="https://github.com/csainty/Apphbify" rel="external" target="_blank">fork it on GitHub</a>!
                 </div>
             </div>
-            <div class="row">
+            <div class="row-fluid">
                 <div class="span12">
                     <a href="/About">About AppHarbify</a>
                     |
