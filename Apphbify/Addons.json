@@ -19,5 +19,6 @@
   { 'key': 'searchifyindextank', 'plan': 'starter' },
   { 'key': 'sendgrid', 'plan': 'free' },
   { 'key': 'sqlserver', 'plan': 'yocto' },
-  { 'key': 'stillalive', 'plan': 'basic' }
+  { 'key': 'stillalive', 'plan': 'basic' },
+  { 'key': 'xeround', 'plan': 'starter' }
 ]
