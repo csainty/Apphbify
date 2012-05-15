@@ -19,33 +19,36 @@
     <header>
         <div class="navbar">
             <div class="navbar-inner">
-                <div class="container-fluid">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
                     <a class="brand" href="/">AppHarbify!</a>
-                    <ul class="nav">
-                        <li class="@(Model.CurrentPage == "Home" ? "active" : "")">
-                            <a href="/">Home</a>
-                        </li>
-                        <li class="@(Model.CurrentPage == "Apps" ? "active" : "")">
-                            <a href="/Apps">Apps</a>
-                        </li>
-                        <li class="@(Model.CurrentPage == "Sites" ? "active" : "")">
-                            <a href="/Sites">Deployed Sites</a>
-                        </li>
-                    </ul>
-                    <ul class="nav pull-right">
-                        @if (Model.IsLoggedOn)
-                        {
-                            <li>
-                                <a href="/SignOut">Sign Out</a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li class="@(Model.CurrentPage == "Home" ? "active" : "")">
+                                <a href="/">Home</a>
                             </li>
+                            <li class="@(Model.CurrentPage == "Apps" ? "active" : "")">
+                                <a href="/Apps">Apps</a>
+                            </li>
+                            <li class="@(Model.CurrentPage == "Sites" ? "active" : "")">
+                                <a href="/Sites">Deployed Sites</a>
+                            </li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            @if (Model.IsLoggedOn)
+                        {
+                                <li>
+                                    <a href="/SignOut">Sign Out</a>
+                                </li>
                         }
                         else
                         {
-                            <li class="@(Model.CurrentPage == "SignIn" ? "active" : "")">
-                                <a href="/SignIn">Sign In</a>
-                            </li>
+                                <li class="@(Model.CurrentPage == "SignIn" ? "active" : "")">
+                                    <a href="/SignIn">Sign In</a>
+                                </li>
                         }
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
