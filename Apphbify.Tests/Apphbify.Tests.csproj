@@ -83,7 +83,6 @@
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
     <Compile Include="Helpers\BrowserResponseExtensions.cs" />
     <Compile Include="Helpers\TestingRazorConfiguration.cs" />
-    <Compile Include="Helpers\TestingSession.cs" />
     <Compile Include="Helpers\TestingViewEngine.cs" />
     <Compile Include="Hooks\NotifyByEmail\When_no_payload_is_sent.cs" />
     <Compile Include="Hooks\NotifyByEmail\When_a_notification_is_sent.cs" />

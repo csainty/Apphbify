@@ -6,6 +6,7 @@ using Moq;
 using Nancy;
 using Nancy.Testing;
 using Nancy.Testing.Fakes;
+using Nancy.Session;
 
 namespace Apphbify.Tests
 {
@@ -90,7 +91,12 @@ namespace Apphbify.Tests
 
         public void PrepareBootstrapper(ConfigurableBootstrapper bootstrapper)
         {
-            TestingSession.Enable(bootstrapper, _Session);
+            bootstrapper.BeforeRequest.AddItemToStartOfPipeline(ctx =>
+            {
+                ctx.Request.Session = new Session(_Session);
+                return null;
+            });
+
         }
     }
 }
