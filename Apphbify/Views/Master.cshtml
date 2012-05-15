@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>AppHarbify</title>
     <meta name="description" content="Instantly deploy open source software to AppHarbor">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     @if (!String.IsNullOrEmpty(Model.WebSiteSparkId))
     {
         <meta name="WebsiteSpark" content="@Model.WebSiteSparkId" />
@@ -20,37 +20,40 @@
         <div class="navbar">
             <div class="navbar-inner">
                 <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
                     <a class="brand" href="/">AppHarbify!</a>
-                    <ul class="nav">
-                        <li class="@(Model.CurrentPage == "Home" ? "active" : "")">
-                            <a href="/">Home</a>
-                        </li>
-                        <li class="@(Model.CurrentPage == "Apps" ? "active" : "")">
-                            <a href="/Apps">Apps</a>
-                        </li>
-                        <li class="@(Model.CurrentPage == "Sites" ? "active" : "")">
-                            <a href="/Sites">Deployed Sites</a>
-                        </li>
-                    </ul>
-                    <ul class="nav pull-right">
-                        @if (Model.IsLoggedOn)
-                        {
-                            <li>
-                                <a href="/SignOut">Sign Out</a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li class="@(Model.CurrentPage == "Home" ? "active" : "")">
+                                <a href="/">Home</a>
                             </li>
+                            <li class="@(Model.CurrentPage == "Apps" ? "active" : "")">
+                                <a href="/Apps">Apps</a>
+                            </li>
+                            <li class="@(Model.CurrentPage == "Sites" ? "active" : "")">
+                                <a href="/Sites">Deployed Sites</a>
+                            </li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            @if (Model.IsLoggedOn)
+                        {
+                                <li>
+                                    <a href="/SignOut">Sign Out</a>
+                                </li>
                         }
                         else
                         {
-                            <li class="@(Model.CurrentPage == "SignIn" ? "active" : "")">
-                                <a href="/SignIn">Sign In</a>
-                            </li>
+                                <li class="@(Model.CurrentPage == "SignIn" ? "active" : "")">
+                                    <a href="/SignIn">Sign In</a>
+                                </li>
                         }
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-    <div class="container">
+    <div class="container-fluid">
         @if (Model.HasErrorFlash)
         {
             <div class="alert alert-error">
@@ -68,14 +71,14 @@
         @RenderBody()
     </div>
     <footer>
-        <div class="container">
-            <div class="row">
+        <div class="container-fluid">
+            <div class="row-fluid hidden-phone">
                 <div class="span12">
                     AppHarbify is open source. To contribute or add your own projects,
                     <a href="https://github.com/csainty/Apphbify" rel="external" target="_blank">fork it on GitHub</a>!
                 </div>
             </div>
-            <div class="row">
+            <div class="row-fluid">
                 <div class="span12">
                     <a href="/About">About AppHarbify</a>
                     |
