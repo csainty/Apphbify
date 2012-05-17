@@ -4,12 +4,12 @@ using Xunit;
 
 namespace Apphbify.Tests.Pages.Deploy
 {
-    public class When_no_application_name_is_specified
+    public class When_no_region_id_is_specified
     {
         private Browser _Browser;
         private BrowserResponse _Response;
 
-        public When_no_application_name_is_specified()
+        public When_no_region_id_is_specified()
         {
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
             {
@@ -17,7 +17,7 @@ namespace Apphbify.Tests.Pages.Deploy
             });
             _Response = _Browser.Post("/Deploy/jabbr", with =>
             {
-                with.FormValue("region_id", "amazon-web-services::us-east-1");
+                with.FormValue("application_name", "foo");
             });
         }
 

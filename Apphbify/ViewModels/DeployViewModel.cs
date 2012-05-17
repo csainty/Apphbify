@@ -1,4 +1,5 @@
-﻿using Apphbify.Data;
+﻿using System.Collections.Generic;
+using Apphbify.Data;
 using Nancy.Session;
 
 namespace Apphbify.ViewModels
@@ -7,10 +8,13 @@ namespace Apphbify.ViewModels
     {
         public App App { get; set; }
 
-        public DeployViewModel(App app, ISession session)
+        public IList<Region> Regions { get; set; }
+
+        public DeployViewModel(App app, DataStore store, ISession session)
             : base("Deploy", session)
         {
             App = app;
+            Regions = store.GetAllRegions();
         }
     }
 }

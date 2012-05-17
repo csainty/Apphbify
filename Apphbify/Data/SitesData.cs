@@ -9,19 +9,11 @@ namespace Apphbify.Data
 {
     public class DataStore
     {
-        private static List<App> _Apps;
-        private static List<Addon> _Addons;
+        private static List<App> _Apps = LoadData<List<App>>("Apphbify.Apps.json").OrderBy(d => d.Name.ToLowerInvariant()).ToList();
+        private static List<Addon> _Addons = LoadData<List<Addon>>("Apphbify.Addons.json").ToList();
+        private static List<Region> _Regions = LoadData<List<Region>>("Apphbify.Regions.json").ToList();
 
-        public DataStore()
-        {
-            _Apps = LoadData<List<App>>("Apphbify.Apps.json")
-                .OrderBy(d => d.Name.ToLowerInvariant())
-                .ToList();
-            _Addons = LoadData<List<Addon>>("Apphbify.Addons.json")
-                .ToList();
-        }
-
-        private T LoadData<T>(string name)
+        private static T LoadData<T>(string name)
         {
             string json;
             using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name))
@@ -46,10 +38,25 @@ namespace Apphbify.Data
         {
             return _Addons.Where(d => d.Key.Equals(key, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
         }
+
+        public IList<Region> GetAllRegions()
+        {
+            return _Regions;
+        }
+
+        public bool DoesRegionExist(string regionId)
+        {
+            return _Regions.Any(d => d.Value.Equals(regionId, StringComparison.InvariantCultureIgnoreCase));
+        }
     }
 
     public class App
     {
+        public App()
+        {
+            Variables = new Dictionary<string, string>();
+        }
+
         [JsonProperty("key")]
         public string Key { get; set; }
 
@@ -82,5 +89,14 @@ namespace Apphbify.Data
 
         [JsonProperty("plan")]
         public string Plan { get; set; }
+    }
+
+    public class Region
+    {
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("value")]
+        public string Value { get; set; }
     }
 }

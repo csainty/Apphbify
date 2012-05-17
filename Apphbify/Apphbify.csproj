@@ -163,6 +163,7 @@
     <Content Include="Content\fonts\Ubuntu-RI-webfont.ttf" />
     <Content Include="Content\fonts\Ubuntu-RI-webfont.woff" />
     <None Include="Content\js\bootstrap.js" />
+    <EmbeddedResource Include="Regions.json" />
     <Content Include="Resources\favicon.ico" />
     <None Include="Content\js\bootstrap.modal.js" />
     <None Include="Content\js\bootstrap.tooltip.js" />

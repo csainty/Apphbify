@@ -6,6 +6,6 @@ namespace Apphbify.Services
 {
     public interface IDeploymentService
     {
-        DeploymentResult Deploy(string siteName, App application, Dictionary<string, string> variables, out string slug);
+        DeploymentResult Deploy(string siteName, string regionId, App application, Dictionary<string, string> variables, out string slug);
     }
 }

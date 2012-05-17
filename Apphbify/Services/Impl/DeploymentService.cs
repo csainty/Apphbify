@@ -15,14 +15,14 @@ namespace Apphbify.Services
             _Data = data;
         }
 
-        public DeploymentResult Deploy(string siteName, App application, Dictionary<string, string> variables, out string slug)
+        public DeploymentResult Deploy(string siteName, string regionId, App application, Dictionary<string, string> variables, out string slug)
         {
             bool variablesOk = true;
             bool addonsOk = true;
             slug = "";
 
             // Create the application at AppHarbor and store away the slug
-            var createResult = _Api.CreateApplication(siteName);
+            var createResult = _Api.CreateApplication(siteName, regionId);
             if (createResult.Status != CreateStatus.Created) return DeploymentResult.UnableToCreateApplication;
             slug = createResult.ID;
 
