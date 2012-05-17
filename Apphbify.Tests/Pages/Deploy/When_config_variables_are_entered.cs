@@ -64,5 +64,13 @@ namespace Apphbify.Tests.Pages.Deploy
         {
             Assert.Equal(3, _ReceivedVars.Count);
         }
+
+        [Fact]
+        public void The_variables_should_be_correct()
+        {
+            Assert.Equal("test api key", _ReceivedVars["auth.apiKey"]);
+            Assert.Equal("test app name", _ReceivedVars["auth.appName"]);
+            Assert.Equal("test analytics key", _ReceivedVars["googleAnalytics"]);
+        }
     }
 }
