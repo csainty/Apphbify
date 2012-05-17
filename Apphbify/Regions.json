@@ -1,0 +1,4 @@
+﻿[
+    { name: 'United States', value: 'amazon-web-services::us-east-1' },
+    { name: 'Europe', value: 'amazon-web-services::eu-west-1' }
+]

@@ -77,9 +77,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper\DoesRegionExist.cs" />
     <Compile Include="Bootstrapper\When_requesting_the_home_page.cs" />
     <Compile Include="DataStoreTests\GetAddonByKey.cs" />
     <Compile Include="DataStoreTests\GetAllApps.cs" />
+    <Compile Include="DataStoreTests\GetAllRegions.cs" />
     <Compile Include="DataStoreTests\GetAppByKey.cs" />
     <Compile Include="Helpers\BrowserResponseExtensions.cs" />
     <Compile Include="Helpers\TestingRazorConfiguration.cs" />
