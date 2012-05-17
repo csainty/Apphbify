@@ -52,6 +52,11 @@ namespace Apphbify.Data
 
     public class App
     {
+        public App()
+        {
+            Variables = new Dictionary<string, string>();
+        }
+
         [JsonProperty("key")]
         public string Key { get; set; }
 
