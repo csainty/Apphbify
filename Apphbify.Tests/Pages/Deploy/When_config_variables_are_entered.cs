@@ -19,9 +19,9 @@ namespace Apphbify.Tests.Pages.Deploy
         {
             _Deploy = new Mock<IDeploymentService>(MockBehavior.Strict);
             string slug;
-            _Deploy.Setup(d => d.Deploy(It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug))
+            _Deploy.Setup(d => d.Deploy(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug))
                 .Returns(DeploymentResult.Success)
-                .Callback<string, App, Dictionary<string, string>, string>((name, app, vars, alug) =>
+                .Callback<string, string, App, Dictionary<string, string>, string>((name, region, app, vars, alug) =>
                 {
                     _ReceivedVars = vars;
                 }); ;
@@ -33,6 +33,7 @@ namespace Apphbify.Tests.Pages.Deploy
             _Response = _Browser.Post("/Deploy/jabbr", with =>
             {
                 with.FormValue("application_name", "JabbR Test");
+                with.FormValue("region_id", "amazon-web-services::us-east-1");
                 with.FormValue("auth.apiKey", "test api key");
                 with.FormValue("auth.appName", "test app name");
                 with.FormValue("googleAnalytics", "test analytics key");
@@ -55,7 +56,7 @@ namespace Apphbify.Tests.Pages.Deploy
         public void It_should_have_fired_the_deployment()
         {
             string slug;
-            _Deploy.Verify(d => d.Deploy(It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug), Times.Once());
+            _Deploy.Verify(d => d.Deploy(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug), Times.Once());
         }
 
         [Fact]

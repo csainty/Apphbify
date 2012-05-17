@@ -17,7 +17,7 @@ namespace Apphbify.Services
 
         CreateResult<long> CreateServicehook(string slug, string url);
 
-        CreateResult<string> CreateApplication(string appName);
+        CreateResult<string> CreateApplication(string appName, string regionId);
 
         CreateResult<long> CreateConfigurationVariable(string slug, string key, string value);
     }

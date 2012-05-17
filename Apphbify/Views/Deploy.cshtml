@@ -14,6 +14,13 @@
         <legend></legend>
         <label for="application_name">Application name</label>
         <input type="text" name="application_name" id="application_name" placeholder="name your deployment..." />
+        <label for="region_id">Deployment Region</label>
+        <select name="region_id" id="region_id">
+            @foreach (var region in Model.Regions)
+            {
+                <option value="@region.Value">@region.Name</option>
+            }
+        </select>
         @foreach (var variable in Model.App.Variables)
         {
             <label for="@variable.Key">@variable.Value</label>

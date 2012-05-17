@@ -92,6 +92,8 @@
     <Compile Include="Pages\About\When_displaying_the_about_page.cs" />
     <Compile Include="Pages\AddEmailNotification\When_creating_the_hook_fails.cs" />
     <Compile Include="Pages\Apps\When_displaying_the_apps_page.cs" />
+    <Compile Include="Pages\Deploy\When_an_invalid_region_id_is_specified.cs" />
+    <Compile Include="Pages\Deploy\When_no_region_id_is_specified.cs" />
     <Compile Include="Pages\Deploy\When_addons_fail_to_install.cs" />
     <Compile Include="Pages\Deploy\When_application_creation_fails.cs" />
     <Compile Include="Pages\Deploy\When_code_deploy_fails.cs" />

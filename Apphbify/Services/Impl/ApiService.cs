@@ -83,9 +83,9 @@ namespace Apphbify.Services
             return _Api.CreateServicehook(slug, url);
         }
 
-        public CreateResult<string> CreateApplication(string appName)
+        public CreateResult<string> CreateApplication(string appName, string regionId)
         {
-            return _Api.CreateApplication(appName, "amazon-web-services::us-east-1");
+            return _Api.CreateApplication(appName, regionId);
         }
 
         public CreateResult<long> CreateConfigurationVariable(string slug, string key, string value)

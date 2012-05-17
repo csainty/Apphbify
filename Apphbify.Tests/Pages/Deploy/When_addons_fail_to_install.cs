@@ -18,7 +18,7 @@ namespace Apphbify.Tests.Pages.Deploy
         {
             _Deploy = new Mock<IDeploymentService>(MockBehavior.Strict);
             string slug;
-            _Deploy.Setup(d => d.Deploy(It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug)).Returns(DeploymentResult.ErrorInstallingAddons);
+            _Deploy.Setup(d => d.Deploy(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug)).Returns(DeploymentResult.ErrorInstallingAddons);
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
             {
                 with.LoggedInUser();
@@ -27,6 +27,7 @@ namespace Apphbify.Tests.Pages.Deploy
             _Response = _Browser.Post("/Deploy/jabbr", with =>
             {
                 with.FormValue("application_name", "JabbR Test");
+                with.FormValue("region_id", "amazon-web-services::us-east-1");
             });
         }
 
@@ -46,7 +47,7 @@ namespace Apphbify.Tests.Pages.Deploy
         public void It_should_have_fired_the_deployment()
         {
             string slug;
-            _Deploy.Verify(d => d.Deploy(It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug), Times.Once());
+            _Deploy.Verify(d => d.Deploy(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<App>(), It.IsAny<Dictionary<string, string>>(), out slug), Times.Once());
         }
     }
 }

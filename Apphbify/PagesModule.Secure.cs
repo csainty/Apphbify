@@ -52,7 +52,7 @@ namespace Apphbify
             var app = _Data.GetAppByKey((string)parameters.key);
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
 
-            return View["Deploy", new DeployViewModel(app, Request.Session)];
+            return View["Deploy", new DeployViewModel(app, _Data, Request.Session)];
         }
 
         private Response DoDeploy(dynamic parameters)
@@ -60,8 +60,10 @@ namespace Apphbify
             var app = _Data.GetAppByKey((string)parameters.key);
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
             if (!Request.Form.application_name.HasValue) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please enter an application name");
+            if (!Request.Form.region_id.HasValue || !_Data.DoesRegionExist(Request.Form.region_id)) return Response.AsRedirect("/Deploy/" + app.Key).WithErrorFlash(Session, "Please choose a valid deployment region");
 
             string appName = Request.Form.application_name;
+            string region_id = Request.Form.region_id;
             string slug = "";
 
             // Build set of variables that need to be added to the application
@@ -72,7 +74,7 @@ namespace Apphbify
                     variables.Add(variable.Key, Request.Form[variable.Key]);
             }
 
-            var result = _Deploy.Deploy(appName, app, variables, out slug);
+            var result = _Deploy.Deploy(appName, region_id, app, variables, out slug);
 
             // TODO: Log errors here, we want to know whether the API or the app config is at fault.
             switch (result)
