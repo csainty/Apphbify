@@ -34,7 +34,7 @@
     project_url: 'https://github.com/davidfowl/JabbR',
     download_url: 'https://github.com/csainty/JabbR/tarball/AppHarbify',
     addons: ['sqlserver'],
-    enableFileSystem: false,
+    enableFileSystem: true,
     variables: {
       'auth.apiKey': 'Janrain API key',
       'auth.appName': 'Janrain application name',
