@@ -1,8 +1,8 @@
 #AppHarbify
 
-Instantly deploy open source applications into the [AppHarbor](http://appharbor.com) cloud platform.
+Instantly deploy and configure open source applications into the [AppHarbor](http://appharbor.com) cloud platform.
 
-To see it in action, visit http://appharbify.com and sign in with your AppHarbor account.
+To see it in action, visit [appharbify.com](http://appharbify.com) and sign in with your AppHarbor account.
 
 ##Want to make your app available?
 It's simple, fork AppHarbify, edit [Apps.json](https://github.com/csainty/Apphbify/blob/master/Apphbify/Apps.json) and send me a pull request.
