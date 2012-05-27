@@ -191,6 +191,7 @@
     <Content Include="Views\Sites.cshtml" />
     <Content Include="Views\Deploy.cshtml" />
     <Content Include="Views\About.cshtml" />
+    <Content Include="Content\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
