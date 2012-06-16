@@ -10,6 +10,7 @@
   { 'key': 'logentries', 'plan': 'Trial' },
   { 'key': 'mailgun', 'plan': 'free' },
   { 'key': 'memcacher', 'plan': 'pico' },
+  { 'key': 'memcachier', 'plan': '15' },
   { 'key': 'mongolab', 'plan': 'starter' },
   { 'key': 'mongohq', 'plan': 'sandbox' },
   { 'key': 'mysql', 'plan': 'yocto' },
@@ -18,8 +19,8 @@
   { 'key': 'redistogo', 'plan': 'nano' },
   { 'key': 'searchifyindextank', 'plan': 'starter' },
   { 'key': 'sendgrid', 'plan': 'free' },
+  { 'Key': 'spreedlycore', 'plan': 'free' },
   { 'key': 'sqlserver', 'plan': 'yocto' },
   { 'key': 'stillalive', 'plan': 'basic' },
-  { 'key': 'xeround', 'plan': 'starter' },
-  { 'Key': 'spreedlycore', 'plan': 'free' }
+  { 'key': 'xeround', 'plan': 'starter' }
 ]
