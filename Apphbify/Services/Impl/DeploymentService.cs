@@ -24,7 +24,7 @@ namespace Apphbify.Services
             // Create the application at AppHarbor and store away the slug
             var createResult = _Api.CreateApplication(siteName, regionId);
             if (createResult.Status != CreateStatus.Created) return DeploymentResult.UnableToCreateApplication;
-            slug = createResult.ID;
+            slug = createResult.Id;
 
             // Attempt to disable precompilation. Not fatal if it fails.
             _Api.DisablePreCompilation(slug);

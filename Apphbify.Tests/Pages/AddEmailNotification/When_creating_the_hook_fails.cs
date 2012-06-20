@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AppHarbor.Model;
 using Apphbify.Services;
 using Apphbify.ViewModels;
@@ -21,7 +18,7 @@ namespace Apphbify.Tests.Pages.AddEmailNotification
         public When_creating_the_hook_fails()
         {
             _Api = new Mock<IApiService>(MockBehavior.Strict);
-            _Api.Setup(d => d.CreateServicehook(It.IsAny<string>(), It.IsAny<string>())).Returns(new CreateResult<long> { Status = CreateStatus.Undefined });
+            _Api.Setup(d => d.CreateServicehook(It.IsAny<string>(), It.IsAny<string>())).Returns(new CreateResult { Status = CreateStatus.Undefined });
 
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
             {

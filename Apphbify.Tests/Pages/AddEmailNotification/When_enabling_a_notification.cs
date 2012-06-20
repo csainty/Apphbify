@@ -1,5 +1,4 @@
-﻿using System;
-using AppHarbor.Model;
+﻿using AppHarbor.Model;
 using Apphbify.Services;
 using Apphbify.ViewModels;
 using Moq;
@@ -18,7 +17,7 @@ namespace Apphbify.Tests.Pages.AddEmailNotification
         public When_enabling_a_notification()
         {
             _Api = new Mock<IApiService>(MockBehavior.Strict);
-            _Api.Setup(d => d.CreateServicehook(It.IsAny<string>(), It.IsAny<string>())).Returns(new CreateResult<long> { Status = CreateStatus.Created });
+            _Api.Setup(d => d.CreateServicehook(It.IsAny<string>(), It.IsAny<string>())).Returns(new CreateResult { Status = CreateStatus.Created });
 
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
             {

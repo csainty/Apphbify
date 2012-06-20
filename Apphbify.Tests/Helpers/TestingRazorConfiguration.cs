@@ -12,7 +12,7 @@ namespace Apphbify.Tests.Helpers
 
         public IEnumerable<string> GetAssemblyNames()
         {
-            return new[] { "AppHarbor.NET" };
+            return new[] { "AppHarbor.Sdk" };
         }
 
         public IEnumerable<string> GetDefaultNamespaces()

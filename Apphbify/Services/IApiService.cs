@@ -13,12 +13,12 @@ namespace Apphbify.Services
 
         bool EnableFileSystem(string application_slug);
 
-        IList<Application> GetApplications();
+        IEnumerable<Application> GetApplications();
 
-        CreateResult<long> CreateServicehook(string slug, string url);
+        CreateResult CreateServicehook(string slug, string url);
 
-        CreateResult<string> CreateApplication(string appName, string regionId);
+        CreateResult CreateApplication(string appName, string regionId);
 
-        CreateResult<long> CreateConfigurationVariable(string slug, string key, string value);
+        CreateResult CreateConfigurationVariable(string slug, string key, string value);
     }
 }

@@ -9,13 +9,13 @@ namespace Apphbify.Services
 {
     public class ApiService : IApiService
     {
-        private readonly AppHarborApi _Api;
+        private readonly AppHarborClient _Api;
         private readonly string _AccessToken;
 
         public ApiService(string token)
         {
             _AccessToken = token;
-            _Api = new AppHarborApi(new AuthInfo { AccessToken = _AccessToken, TokenType = "Bearer" });
+            _Api = new AppHarborClient(new AuthInfo(_AccessToken, "Bearer"));
         }
 
         public bool DeployBuild(string application_slug, string download_url)
@@ -31,6 +31,7 @@ namespace Apphbify.Services
                         @default = new
                         {
                             commit_id = Guid.NewGuid().ToString().Split('-')[0],
+
                             commit_message = "Deployed from AppHarbify",
                             download_url = download_url
                         }
@@ -73,22 +74,22 @@ namespace Apphbify.Services
             return response.StatusCode == HttpStatusCode.OK;
         }
 
-        public IList<Application> GetApplications()
+        public IEnumerable<Application> GetApplications()
         {
             return _Api.GetApplications();
         }
 
-        public CreateResult<long> CreateServicehook(string slug, string url)
+        public CreateResult CreateServicehook(string slug, string url)
         {
             return _Api.CreateServicehook(slug, url);
         }
 
-        public CreateResult<string> CreateApplication(string appName, string regionId)
+        public CreateResult CreateApplication(string appName, string regionId)
         {
             return _Api.CreateApplication(appName, regionId);
         }
 
-        public CreateResult<long> CreateConfigurationVariable(string slug, string key, string value)
+        public CreateResult CreateConfigurationVariable(string slug, string key, string value)
         {
             return _Api.CreateConfigurationVariable(slug, key, value);
         }

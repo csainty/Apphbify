@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AppHarbor.Model;
+﻿using AppHarbor.Model;
 using Apphbify.Services;
 using Moq;
 using Nancy;
@@ -16,7 +15,7 @@ namespace Apphbify.Tests.Pages.Sites
         public When_displaying_the_sites_page()
         {
             var api = new Mock<IApiService>(MockBehavior.Strict);
-            api.Setup(d => d.GetApplications()).Returns(new List<Application> { new Application { Slug = "test", Name = "My Test Site" } });
+            api.Setup(d => d.GetApplications()).Returns(new[] { new Application { Slug = "test", Name = "My Test Site" } });
 
             _Browser = Testing.CreateBrowser<SecuredPagesModule>(with =>
             {
