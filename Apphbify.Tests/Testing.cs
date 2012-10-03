@@ -32,7 +32,6 @@ namespace Apphbify.Tests
             {
                 cfg.Module<TModule>();
                 config.Dependencies(cfg);
-                cfg.DisableAutoRegistration();
                 cfg.NancyEngine<NancyEngine>();
                 cfg.ViewEngines(typeof(TestingViewEngine));
             });

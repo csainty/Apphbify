@@ -17,20 +17,20 @@ namespace Apphbify
             Get["/callback"] = Callback;
         }
 
-        private Response SignIn(dynamic parameters)
+        private dynamic SignIn(dynamic parameters)
         {
             string redirect = Request.Query.redirect.HasValue ? Request.Query.redirect : "";
             Session[SessionKeys.SIGN_IN_REDIRECT] = redirect;
             return View["SignIn", new SignInViewModel(_OAuth, Request.Session)];
         }
 
-        private Response SignOut(dynamic parameters)
+        private dynamic SignOut(dynamic parameters)
         {
             Request.Session.DeleteAll();
             return Response.AsRedirect("/").WithSuccessFlash(Session, "Signed out!");
         }
 
-        private Response Callback(dynamic parameters)
+        private dynamic Callback(dynamic parameters)
         {
             string access_token = "";
             if (Request.Query.code.HasValue) access_token = _OAuth.GetAccessToken(Request.Query.code);

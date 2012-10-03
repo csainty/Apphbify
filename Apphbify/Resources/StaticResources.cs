@@ -29,14 +29,8 @@ namespace Apphbify.Resources
         }
     }
 
-    public class StaticResourceStartup : IStartup
+    public class StaticResourceStartup : IApplicationStartup
     {
-        public IEnumerable<CollectionTypeRegistration> CollectionTypeRegistrations { get { return null; } }
-
-        public IEnumerable<InstanceRegistration> InstanceRegistrations { get { return null; } }
-
-        public IEnumerable<TypeRegistration> TypeRegistrations { get { return null; } }
-
         public void Initialize(IPipelines pipelines)
         {
             RegisterFile("/robots.txt", StaticResources.Robots, pipelines);

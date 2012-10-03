@@ -27,12 +27,12 @@ namespace Apphbify
             Post["/Deploy/{key}"] = DoDeploy;
         }
 
-        private Response Sites(dynamic parameters)
+        private dynamic Sites(dynamic parameters)
         {
             return View["Sites", new SitesViewModel(_Api, Request.Session)];
         }
 
-        private Response EnableEmailNotification(dynamic parameters)
+        private dynamic EnableEmailNotification(dynamic parameters)
         {
             if (!Request.Form.email.HasValue)
                 return Response.AsJson(JsonResult.Error("Please provide an email address."), HttpStatusCode.BadRequest);
@@ -47,7 +47,7 @@ namespace Apphbify
             return Response.AsJson(JsonResult.OK());
         }
 
-        private Response Deploy(dynamic parameters)
+        private dynamic Deploy(dynamic parameters)
         {
             var app = _Data.GetAppByKey((string)parameters.key);
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));
@@ -55,7 +55,7 @@ namespace Apphbify
             return View["Deploy", new DeployViewModel(app, _Data, Request.Session)];
         }
 
-        private Response DoDeploy(dynamic parameters)
+        private dynamic DoDeploy(dynamic parameters)
         {
             var app = _Data.GetAppByKey((string)parameters.key);
             if (app == null) return Response.AsRedirect("/Apps").WithErrorFlash(Session, String.Format("App {0} not found.", (string)parameters.key));

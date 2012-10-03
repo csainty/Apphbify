@@ -16,17 +16,17 @@ namespace Apphbify
             Get["/About"] = About;
         }
 
-        private Response Home(dynamic parameters)
+        private dynamic Home(dynamic parameters)
         {
             return View["Home", new BaseViewModel("Home", Request.Session)];
         }
 
-        private Response Apps(dynamic parameters)
+        private dynamic Apps(dynamic parameters)
         {
             return View["Apps", new AppsViewModel(_Store, Request.Session)];
         }
 
-        private Response About(dynamic parameters)
+        private dynamic About(dynamic parameters)
         {
             return View["About", new BaseViewModel("About", Request.Session)];
         }
