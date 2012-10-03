@@ -33,8 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AppHarbor.Sdk">
-      <HintPath>..\packages\AppHarbor.NET.2.0.0\lib\net35\AppHarbor.Sdk.dll</HintPath>
+    <Reference Include="AppHarbor.Sdk, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AppHarbor.NET.2.2.0\lib\net35\AppHarbor.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="CsQuery">
       <HintPath>..\packages\CsQuery.1.2.1\lib\net40\CsQuery.dll</HintPath>
@@ -54,9 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.12.1\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="RestSharp, Version=103.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RestSharp.103.1\lib\net4\RestSharp.dll</HintPath>
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
