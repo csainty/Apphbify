@@ -36,9 +36,8 @@
     addons: ['sqlserver'],
     enableFileSystem: true,
     variables: {
-      'auth.apiKey': 'Janrain API key',
-      'auth.appName': 'Janrain application name',
-      'googleAnalytics': 'Google analytics key'
+      'jabbr:googleAnalytics': 'Google analytics key',
+      'jabbr:azureblobStorageConnectionString': 'Azure file upload provider'
     }
   },
   {
