@@ -34,8 +34,6 @@ namespace Apphbify.Tests.Pages.Deploy
             {
                 with.FormValue("application_name", "JabbR Test");
                 with.FormValue("region_id", "amazon-web-services::us-east-1");
-                with.FormValue("auth.apiKey", "test api key");
-                with.FormValue("auth.appName", "test app name");
                 with.FormValue("googleAnalytics", "test analytics key");
             });
         }
@@ -62,14 +60,12 @@ namespace Apphbify.Tests.Pages.Deploy
         [Fact]
         public void It_should_have_sent_the_vars_to_deploy()
         {
-            Assert.Equal(3, _ReceivedVars.Count);
+            Assert.Equal(1, _ReceivedVars.Count);
         }
 
         [Fact]
         public void The_variables_should_be_correct()
         {
-            Assert.Equal("test api key", _ReceivedVars["auth.apiKey"]);
-            Assert.Equal("test app name", _ReceivedVars["auth.appName"]);
             Assert.Equal("test analytics key", _ReceivedVars["googleAnalytics"]);
         }
     }
