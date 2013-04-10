@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AppHarbor.Model;
 using Apphbify.Data;
 
@@ -34,7 +35,7 @@ namespace Apphbify.Services
                 _Api.EnableFileSystem(slug);
 
             // Set configuration variables
-            foreach (var variable in variables)
+            foreach (var variable in variables.Where(x => !string.IsNullOrEmpty(x.Key) && !string.IsNullOrEmpty(x.Value)))
             {
                 if (_Api.CreateConfigurationVariable(slug, variable.Key, variable.Value).Status != CreateStatus.Created)
                     variablesOk = false;
