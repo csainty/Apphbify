@@ -31,7 +31,7 @@
     key: 'jabbr',
     name: 'JabbR',
     description: 'JabbR is a chat application built with ASP.NET using SignalR.',
-    project_url: 'https://github.com/JabbR/JabbR',
+    project_url: 'http://jabbr.github.io/JabbR/',
     download_url: 'https://github.com/csainty/JabbR/tarball/AppHarbify',
     addons: ['sqlserver'],
     enableFileSystem: true,
