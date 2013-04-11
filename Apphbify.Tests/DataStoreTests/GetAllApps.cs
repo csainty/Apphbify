@@ -7,7 +7,7 @@ namespace Apphbify.Tests.DataStoreTests
 {
     public class GetAllApps
     {
-        IList<App> _Apps;
+        private IList<App> _Apps;
 
         public GetAllApps()
         {
@@ -30,6 +30,12 @@ namespace Apphbify.Tests.DataStoreTests
         public void All_addons_should_not_be_null()
         {
             Assert.True(_Apps.All(d => d.Addons != null));
+        }
+
+        [Fact]
+        public void All_default_variables_should_not_be_null()
+        {
+            Assert.True(_Apps.All(d => d.DefaultVariables != null));
         }
     }
 }

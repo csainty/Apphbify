@@ -55,6 +55,7 @@ namespace Apphbify.Data
         public App()
         {
             Variables = new Dictionary<string, string>();
+            DefaultVariables = new Dictionary<string, string>();
         }
 
         [JsonProperty("key")]
@@ -80,6 +81,9 @@ namespace Apphbify.Data
 
         [JsonProperty("variables")]
         public Dictionary<string, string> Variables { get; set; }
+
+        [JsonProperty("default_variables")]
+        public Dictionary<string, string> DefaultVariables { get; set; }
     }
 
     public class Addon

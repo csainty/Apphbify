@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using AppHarbor.Model;
 using Apphbify.Data;
 using Apphbify.Services;
@@ -73,6 +75,10 @@ namespace Apphbify
                 if (Request.Form[variable.Key].HasValue)
                     variables.Add(variable.Key, Request.Form[variable.Key]);
             }
+            foreach (var variable in app.DefaultVariables)
+            {
+                variables.Add(variable.Key, this.ParseDefaultValue(variable.Value));
+            }
 
             var result = _Deploy.Deploy(appName, region_id, app, variables, out slug);
 
@@ -100,6 +106,38 @@ namespace Apphbify
             if (String.IsNullOrEmpty(token))
                 return Response.AsRedirect("/SignIn?redirect=" + Uri.EscapeDataString(ctx.Request.Path));
             return null;
+        }
+
+        private string ParseDefaultValue(string value)
+        {
+            if (value == "{random_hex}")
+            {
+                return RandomKey();
+            }
+            return value;
+        }
+
+        private static string RandomKey()
+        {
+            var sb = new StringBuilder(64);
+            var buffer = new byte[32];
+            using (var crypto = new RNGCryptoServiceProvider())
+            {
+                crypto.GetBytes(buffer);
+
+                foreach (byte b in buffer)
+                {
+                    sb.Append(HexChar((int)(b >> 4)));
+                    sb.Append(HexChar((int)(b & 0xF)));
+                }
+
+                return sb.ToString();
+            }
+        }
+
+        private static char HexChar(int value)
+        {
+            return (char)(value > 9 ? value + '7' : value + '0');
         }
     }
 }

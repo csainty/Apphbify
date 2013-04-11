@@ -60,7 +60,7 @@ namespace Apphbify.Tests.Pages.Deploy
         [Fact]
         public void It_should_have_sent_the_vars_to_deploy()
         {
-            Assert.Equal(1, _ReceivedVars.Count);
+            Assert.Equal(5, _ReceivedVars.Count);
         }
 
         [Fact]

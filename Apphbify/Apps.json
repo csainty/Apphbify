@@ -38,7 +38,13 @@
     variables: {
       'jabbr:googleAnalytics': 'Google analytics key',
       'jabbr:azureblobStorageConnectionString': 'Azure file upload provider'
-    }
+    },
+	default_variables: {
+		'jabbr:proxyImages': 'true',
+		'jabbr:requireHttps': 'true',
+		'jabbr:encryptionKey': '{random_hex}',
+		'jabbr:verificationKey': '{random_hex}'
+	}
   },
   {
     key: 'funnelweb',
